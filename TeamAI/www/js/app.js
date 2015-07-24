@@ -32,6 +32,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     controller: 'AppCtrl'
   })
 
+    .state('app.userprofile', {
+      url: '/userprofile',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/userprofile.html'
+        }
+      }
+    })
+
   .state('app.shoppinglist', {
     url: '/shoppinglist',
     views: {
@@ -58,6 +67,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
+
+      .state('app.settings', {
+        url: '/settings',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/settings.html'
+          }
+        }
+      })
+
     .state('app.playlists', {
       url: '/playlists',
       views: {
