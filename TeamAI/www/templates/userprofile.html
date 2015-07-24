@@ -1,5 +1,26 @@
 <ion-view view-title="Profile">
-  <ion-content>
+  <ion-content ng-controller="UserProfileCtrl">
     <!--<h1>User Profile</h1>-->
+    <div class="row">
+        <div class="col">
+          <div class="row">
+           Name
+            </div>
+            <div class="row">
+              {{profilename}}
+              </div>
+        </div>
+       <div class="col">
+         <img data-ng-src="data:image/png;base64,{{profilephoto}}" alt="Description" />
+      </div>
+      </div>
+    <div class="row">
+      <div class="col">
+        <button class="button button-block button-positive">Button</button>
+      </div>
+      <div class="col">
+        <button class="button button-block">Button</button>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
