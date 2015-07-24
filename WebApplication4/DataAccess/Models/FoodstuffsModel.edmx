@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FoodstuffsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbdcCustomerProfile">
+          <Key>
+            <PropertyRef Name="ProfileId" />
+          </Key>
+          <Property Name="ProfileId" Type="bigint" Nullable="false" />
+          <Property Name="CustomerCardNo" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="DisplayShopHealthMeter" Type="varchar" MaxLength="1" />
+          <Property Name="DisplayBudgetMeter" Type="varchar" MaxLength="1" />
+          <Property Name="DisplayEthicalMeter" Type="varchar" MaxLength="1" />
+          <Property Name="BudgetUpperLimit" Type="int" />
+          <Property Name="NumberAdultsinHouseHold" Type="int" />
+          <Property Name="NumberChildreninHouseHold" Type="int" />
+          <Property Name="VegetarianYN" Type="varchar" MaxLength="1" />
+          <Property Name="VeganYN" Type="varchar" MaxLength="1" />
+          <Property Name="GreenYN" Type="varchar" MaxLength="1" />
+          <Property Name="SalesImportnatYN" Type="varchar" MaxLength="1" />
+          <Property Name="BasicShoppingFrequencyWM" Type="varchar" MaxLength="1" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbdcProductExtention">
+          <Key>
+            <PropertyRef Name="NzpnaNo" />
+          </Key>
+          <Property Name="NzpnaNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductDescription" Type="varchar" MaxLength="100" />
+          <Property Name="HealthRating" Type="varchar" MaxLength="10" />
+          <Property Name="EthicsRating" Type="varchar" MaxLength="10" />
+          <Property Name="Food" Type="varchar" MaxLength="1" />
+          <Property Name="Vegetarian" Type="varchar" MaxLength="1" />
+          <Property Name="Vegan" Type="varchar" MaxLength="1" />
+          <Property Name="MaleProduct" Type="varchar" MaxLength="1" />
+          <Property Name="FemaleProduct" Type="varchar" MaxLength="1" />
+          <Property Name="ChildProduct" Type="varchar" MaxLength="1" />
+          <Property Name="Departmentdescription" Type="varchar" MaxLength="35" />
+          <Property Name="SubDepartmentDescription" Type="varchar" MaxLength="35" />
+        </EntityType>
+        <EntityType Name="tbRetailTlogStoresToProcess">
+          <Key>
+            <PropertyRef Name="StoreMembershipNo" />
+          </Key>
+          <Property Name="StoreMembershipNo" Type="int" Nullable="false" />
+          <Property Name="StoreNameLong" Type="varchar" MaxLength="50" />
+          <Property Name="StoreType" Type="varchar" MaxLength="3" />
+          <Property Name="PosTypeId" Type="smallint" />
+          <Property Name="FullSapStoreInd" Type="char" MaxLength="1" />
+          <Property Name="ImportTlogDataInd" Type="char" MaxLength="1" />
+          <Property Name="IncludeInGroupPerformanceMetricsInd" Type="char" MaxLength="1" />
+          <Property Name="RecordDateAdded" Type="smalldatetime" />
+          <Property Name="RecordAddedBy" Type="varchar" MaxLength="70" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="LastUpdateTime" Type="datetime" />
+          <Property Name="LastUpdateUser" Type="varchar" MaxLength="50" />
+          <Property Name="Remarks" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityContainer Name="FoodstuffsModelStoreContainer">
+          <EntitySet Name="tbdcCustomerProfile" EntityType="Self.tbdcCustomerProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbdcProductExtention" EntityType="Self.tbdcProductExtention" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbRetailTlogStoresToProcess" EntityType="Self.tbRetailTlogStoresToProcess" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FoodstuffsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbdcCustomerProfile">
+          <Key>
+            <PropertyRef Name="ProfileId" />
+          </Key>
+          <Property Name="ProfileId" Type="Int64" Nullable="false" />
+          <Property Name="CustomerCardNo" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DisplayShopHealthMeter" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayBudgetMeter" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayEthicalMeter" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="BudgetUpperLimit" Type="Int32" />
+          <Property Name="NumberAdultsinHouseHold" Type="Int32" />
+          <Property Name="NumberChildreninHouseHold" Type="Int32" />
+          <Property Name="VegetarianYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="VeganYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="GreenYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="SalesImportnatYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="BasicShoppingFrequencyWM" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbdcProductExtention">
+          <Key>
+            <PropertyRef Name="NzpnaNo" />
+          </Key>
+          <Property Name="NzpnaNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HealthRating" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EthicsRating" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Food" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Vegetarian" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Vegan" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="MaleProduct" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="FemaleProduct" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ChildProduct" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Departmentdescription" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="SubDepartmentDescription" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbRetailTlogStoresToProcess">
+          <Key>
+            <PropertyRef Name="StoreMembershipNo" />
+          </Key>
+          <Property Name="StoreMembershipNo" Type="Int32" Nullable="false" />
+          <Property Name="StoreNameLong" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StoreType" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="PosTypeId" Type="Int16" />
+          <Property Name="FullSapStoreInd" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ImportTlogDataInd" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="IncludeInGroupPerformanceMetricsInd" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="RecordDateAdded" Type="DateTime" Precision="0" />
+          <Property Name="RecordAddedBy" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="foodstuffsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbdcCustomerProfiles" EntityType="Self.tbdcCustomerProfile" />
+          <EntitySet Name="tbdcProductExtentions" EntityType="Self.tbdcProductExtention" />
+          <EntitySet Name="tbRetailTlogStoresToProcesses" EntityType="Self.tbRetailTlogStoresToProcess" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FoodstuffsModelStoreContainer" CdmEntityContainer="foodstuffsEntities">
+          <EntitySetMapping Name="tbdcCustomerProfiles">
+            <EntityTypeMapping TypeName="FoodstuffsModel.tbdcCustomerProfile">
+              <MappingFragment StoreEntitySet="tbdcCustomerProfile">
+                <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+                <ScalarProperty Name="CustomerCardNo" ColumnName="CustomerCardNo" />
+                <ScalarProperty Name="DisplayShopHealthMeter" ColumnName="DisplayShopHealthMeter" />
+                <ScalarProperty Name="DisplayBudgetMeter" ColumnName="DisplayBudgetMeter" />
+                <ScalarProperty Name="DisplayEthicalMeter" ColumnName="DisplayEthicalMeter" />
+                <ScalarProperty Name="BudgetUpperLimit" ColumnName="BudgetUpperLimit" />
+                <ScalarProperty Name="NumberAdultsinHouseHold" ColumnName="NumberAdultsinHouseHold" />
+                <ScalarProperty Name="NumberChildreninHouseHold" ColumnName="NumberChildreninHouseHold" />
+                <ScalarProperty Name="VegetarianYN" ColumnName="VegetarianYN" />
+                <ScalarProperty Name="VeganYN" ColumnName="VeganYN" />
+                <ScalarProperty Name="GreenYN" ColumnName="GreenYN" />
+                <ScalarProperty Name="SalesImportnatYN" ColumnName="SalesImportnatYN" />
+                <ScalarProperty Name="BasicShoppingFrequencyWM" ColumnName="BasicShoppingFrequencyWM" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbdcProductExtentions">
+            <EntityTypeMapping TypeName="FoodstuffsModel.tbdcProductExtention">
+              <MappingFragment StoreEntitySet="tbdcProductExtention">
+                <ScalarProperty Name="NzpnaNo" ColumnName="NzpnaNo" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="HealthRating" ColumnName="HealthRating" />
+                <ScalarProperty Name="EthicsRating" ColumnName="EthicsRating" />
+                <ScalarProperty Name="Food" ColumnName="Food" />
+                <ScalarProperty Name="Vegetarian" ColumnName="Vegetarian" />
+                <ScalarProperty Name="Vegan" ColumnName="Vegan" />
+                <ScalarProperty Name="MaleProduct" ColumnName="MaleProduct" />
+                <ScalarProperty Name="FemaleProduct" ColumnName="FemaleProduct" />
+                <ScalarProperty Name="ChildProduct" ColumnName="ChildProduct" />
+                <ScalarProperty Name="Departmentdescription" ColumnName="Departmentdescription" />
+                <ScalarProperty Name="SubDepartmentDescription" ColumnName="SubDepartmentDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbRetailTlogStoresToProcesses">
+            <EntityTypeMapping TypeName="FoodstuffsModel.tbRetailTlogStoresToProcess">
+              <MappingFragment StoreEntitySet="tbRetailTlogStoresToProcess">
+                <ScalarProperty Name="StoreMembershipNo" ColumnName="StoreMembershipNo" />
+                <ScalarProperty Name="StoreNameLong" ColumnName="StoreNameLong" />
+                <ScalarProperty Name="StoreType" ColumnName="StoreType" />
+                <ScalarProperty Name="PosTypeId" ColumnName="PosTypeId" />
+                <ScalarProperty Name="FullSapStoreInd" ColumnName="FullSapStoreInd" />
+                <ScalarProperty Name="ImportTlogDataInd" ColumnName="ImportTlogDataInd" />
+                <ScalarProperty Name="IncludeInGroupPerformanceMetricsInd" ColumnName="IncludeInGroupPerformanceMetricsInd" />
+                <ScalarProperty Name="RecordDateAdded" ColumnName="RecordDateAdded" />
+                <ScalarProperty Name="RecordAddedBy" ColumnName="RecordAddedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="LastUpdateTime" ColumnName="LastUpdateTime" />
+                <ScalarProperty Name="LastUpdateUser" ColumnName="LastUpdateUser" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
