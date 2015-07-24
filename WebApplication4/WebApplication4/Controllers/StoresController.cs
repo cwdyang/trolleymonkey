@@ -1,39 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
+using DataAccess.Repos;
+using DataAccess.ViewModels;
 
 namespace WebApplication4.Controllers
 {
     public class StoresController : ApiController
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        private readonly StoreRepo _storeRepo;
+
+        public StoresController()
         {
-            return new string[] { "value1", "value2" };
+            _storeRepo = new StoreRepo();
+        }
+
+        // GET api/<controller>
+        public IEnumerable<Store> Get()
+        {
+            return _storeRepo.GetAll();
         }
 
         // GET api/<controller>/5
-        public string Get(int id)
+        public Store Get(int id)
         {
-            return "value";
-        }
-
-        // POST api/<controller>
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
+            var result = _storeRepo.Get(id);
+            if(result ==null)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            return _storeRepo.Get(id);
         }
     }
 }

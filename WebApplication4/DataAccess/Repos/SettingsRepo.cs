@@ -21,7 +21,7 @@ namespace DataAccess.Repos
         public Settings Get(int id)
         {
             var tbdcCustomerProfile = _context.tbdcCustomerProfiles.Find(id);
-            return new Settings(tbdcCustomerProfile);
+            return tbdcCustomerProfile == null ? null : new Settings(tbdcCustomerProfile);
         }
     }
 }

@@ -73,6 +73,8 @@
       <DependentUpon>FoodstuffsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Store.cs" />
+    <Compile Include="Repos\StoreRepo.cs" />
     <Compile Include="ViewModels\Settings.cs" />
     <Compile Include="Repos\SettingsRepo.cs" />
   </ItemGroup>

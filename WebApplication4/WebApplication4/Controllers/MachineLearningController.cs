@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net.Http;
-using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace WebApplication4.Controllers
@@ -32,8 +28,9 @@ namespace WebApplication4.Controllers
                             "input1", 
                             new StringTable() 
                             {
-                                ColumnNames = new string[] {"UserId", "MovieId", "Rating", "Timestamp"},
-                                Values = new string[,] {  { "0", "0", "0", "0" },  { "0", "0", "0", "0" },  }
+                                ColumnNames = new string[] {"saleCount", "discountCount","dayOfWeek","month","season","schoolholiday","publichol","wdtstart","wdtend","weatherdescription"
+},
+                                Values = new string[,] {  { "0", "0","0","0","value","value","value","value","value","value"},  { "0", "0","0","0","value","value","value","value","value","value"},  }
                             }
                         },
                                         },
@@ -44,7 +41,7 @@ namespace WebApplication4.Controllers
                 const string apiKey = "Z8RNo6HAvk3F5MsnJaK+zjQH3TQ4lFIOKQCFenUrNtVBlZ5ng8SBfpTcbsFrmY4gEONADqxTIIYzg9NDpvObmg=="; // Replace this with the API key for the web service
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
 
-                client.BaseAddress = new Uri("https://ussouthcentral.services.azureml.net/workspaces/771cf293c0e54a8c968f2c34f6f0d094/services/591ff029a7af4d00912b0a4acec88332/execute?api-version=2.0&details=true");
+                client.BaseAddress = new Uri("https://ussouthcentral.services.azureml.net/workspaces/771cf293c0e54a8c968f2c34f6f0d094/services/8b3d1825b5aa4fc0a399b2d443727320/execute?api-version=2.0&details=true");
 
                 HttpResponseMessage response = client.PostAsJsonAsync("", scoreRequest).Result;
 
@@ -65,27 +62,6 @@ namespace WebApplication4.Controllers
                 }
             }
             return result;
-        }
-
-        // GET api/<controller>/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<controller>
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
         }
     }
 }

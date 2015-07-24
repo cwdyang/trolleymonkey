@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using DataAccess.Repos;
 using DataAccess.ViewModels;
@@ -22,8 +19,10 @@ namespace WebApplication4.Controllers
         // GET api/<controller>/5
         public Settings Get(int id)
         {
-            var model = _settingsRepo.Get(id);
-            return model;
+            var result = _settingsRepo.Get(id);
+            if (result == null)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            return result;
         }
 
         // POST api/<controller>
