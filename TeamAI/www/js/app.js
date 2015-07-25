@@ -67,8 +67,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: '/trend',
       views: {
         'menuContent': {
-          templateUrl: 'templates/trend.html'
-
+          templateUrl: 'templates/trend.html',
+          controller: 'MeterCtrl'
         }
       }
     })
@@ -133,14 +133,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     })
 
     .state('app.done', {
-      url: '/done',
-      views: {
-        'menuContent': {
-  	    templateUrl: 'templates/done.html',
-  	    controller: 'DoneCtrl'
+        url: '/done',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/done.html',
+            controller: 'DoneCtrl'
+          }
         }
-      }
-    })
+      })
+
 
 
   //  .state('app.playlists', {
