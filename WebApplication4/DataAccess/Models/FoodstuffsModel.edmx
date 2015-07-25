@@ -14,6 +14,17 @@
           <Property Name="CardNo" Type="varchar" MaxLength="36" Nullable="false" />
           <Property Name="Item" Type="bigint" Nullable="false" />
         </EntityType>
+        <EntityType Name="tbdcBasicShopList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customercardno" Type="varchar" MaxLength="250" />
+          <Property Name="frequency" Type="int" />
+          <Property Name="lastpurchaseddaysago" Type="int" />
+          <Property Name="avgquantitysold" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="nzpnano" Type="varchar" MaxLength="250" />
+        </EntityType>
         <EntityType Name="tbdcCustomerProfile">
           <Key>
             <PropertyRef Name="ProfileId" />
@@ -118,6 +129,7 @@
         </EntityType>
         <EntityContainer Name="FoodstuffsModelStoreContainer">
           <EntitySet Name="ShoppingList" EntityType="Self.ShoppingList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbdcBasicShopList" EntityType="Self.tbdcBasicShopList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbdcCustomerProfile" EntityType="Self.tbdcCustomerProfile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbdcInventory" EntityType="Self.tbdcInventory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbdcPredictItems" EntityType="Self.tbdcPredictItems" Schema="dbo" store:Type="Tables" />
@@ -195,6 +207,7 @@
           <EntitySet Name="tbMasterArticleDepartments" EntityType="FoodstuffsModel.tbMasterArticleDepartment" />
           <EntitySet Name="tbMasterArticleDescriptions" EntityType="FoodstuffsModel.tbMasterArticleDescription" />
           <EntitySet Name="ShoppingLists" EntityType="FoodstuffsModel.ShoppingList" />
+          <EntitySet Name="tbdcBasicShopLists" EntityType="FoodstuffsModel.tbdcBasicShopList" />
         </EntityContainer>
         <EntityType Name="tbdcInventory">
           <Key>
@@ -250,6 +263,17 @@
           <Property Name="CardNo" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Item" Type="Int64" Nullable="false" />
           <Property Name="ShoppingListId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbdcBasicShopList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customercardno" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="frequency" Type="Int32" />
+          <Property Name="lastpurchaseddaysago" Type="Int32" />
+          <Property Name="avgquantitysold" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="nzpnano" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -372,6 +396,18 @@
                 <ScalarProperty Name="Item" ColumnName="Item" />
                 <ScalarProperty Name="CardNo" ColumnName="CardNo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbdcBasicShopLists">
+            <EntityTypeMapping TypeName="FoodstuffsModel.tbdcBasicShopList">
+              <MappingFragment StoreEntitySet="tbdcBasicShopList">
+                <ScalarProperty Name="nzpnano" ColumnName="nzpnano" />
+                <ScalarProperty Name="avgquantitysold" ColumnName="avgquantitysold" />
+                <ScalarProperty Name="lastpurchaseddaysago" ColumnName="lastpurchaseddaysago" />
+                <ScalarProperty Name="frequency" ColumnName="frequency" />
+                <ScalarProperty Name="customercardno" ColumnName="customercardno" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

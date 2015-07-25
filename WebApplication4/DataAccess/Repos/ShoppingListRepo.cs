@@ -16,27 +16,36 @@ namespace DataAccess.Repos
             _context = new foodstuffsEntities();
         }
 
-        public IList<ShoppingListProduct> GetShoppingList(int id)
+        public IList<ShoppingListProduct> GetShoppingList(string customercardno,int count = 15)
         {
-            IList<ShoppingList> dbShoppingList = _context.shoppingList.Where(list => list.ShoppingListId == id).ToList();
-            List<string> longs = dbShoppingList.Select(list => list.Item.ToString()).ToList();
+            var shopList = _context.tbdcBasicShopLists.Where(x => x.customercardno == customercardno).ToList().Take(count).ToList();
 
-            return GetShoppingListProducts(longs);
+            //IList<ShoppingList> dbShoppingList = _context.shoppingList.Where(list => list.ShoppingListId == id).ToList();
+            //List<string> longs = dbShoppingList.Select(list => list.Item.ToString()).ToList();
+
+            return GetShoppingListProducts(shopList);
         }
 
-        private IList<ShoppingListProduct> GetShoppingListProducts(IList<string> shoppingListProductIds)
-        {
-            IList<tbdcProductExtention> tbdcProductExtentions =
-                _context.tbdcProductExtentions.Where(x => shoppingListProductIds.Contains(x.NzpnaNo)).ToList();
-
+        private IList<ShoppingListProduct> GetShoppingListProducts(List<tbdcBasicShopList> shopList)
+        { 
+          
             var shoppingListProducts = new List<ShoppingListProduct>();
-            foreach (var tbdcProduct in tbdcProductExtentions)
+            foreach (var tbdcProductListItem in shopList)
             {
-                var product = new Product(Convert.ToInt64(tbdcProduct.NzpnaNo), tbdcProduct.ProductDescription, "",
-                    tbdcProduct.Unit,
-                    Convert.ToDouble(tbdcProduct.grossretailprice));
-                
-                shoppingListProducts.Add(new ShoppingListProduct(Convert.ToInt32(tbdcProduct.NzpnaNo), 0, product));
+                List<tbdcProductExtention> tbdcProductExtentions =
+              _context.tbdcProductExtentions.Where(x => x.NzpnaNo==tbdcProductListItem.nzpnano).ToList();
+           
+                foreach (var tbdcProduct in tbdcProductExtentions)
+                {
+                    var product = new ShoppingListProduct(Convert.ToInt64(tbdcProduct.NzpnaNo),
+                        tbdcProduct.ProductDescription, "",
+                        tbdcProduct.Unit,
+                        Convert.ToDouble(tbdcProduct.grossretailprice), tbdcProduct.Departmentdescription,
+                        tbdcProduct.SubDepartmentDescription, tbdcProduct.HealthRating == "H", tbdcProduct.Food != "N",
+                        (int)tbdcProductListItem.avgquantitysold);
+
+                    shoppingListProducts.Add(product);
+                }
             }
             return shoppingListProducts;
         }

@@ -19,11 +19,12 @@ namespace WebApplication4.Controllers
     {
 
         // GET api/<controller>
-        public JObject Get(JObject f)
+        public JObject GetBusy()
         {
             const string season = "Winter";
             var weatherdescription = (new WeatherHelper()).GetCurrentWeather();
-            var now = DateTime.Now;
+
+            var now = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTimeOffset.Now, "New Zealand Standard Time");
             now = now.Minute>29 ? new DateTime(now.Year, now.Month, now.Day, now.Hour, 30, 0) : new DateTime(now.Year, now.Month, now.Day, now.Hour, 0, 0);
 
             var req = new MachineLearningRequest(new List<string> { "discountCount", "dayOfWeek", "month", "season", "schoolholiday", "publichol", "wdtstart", "wdtend", "weatherdescription", "saleCount" });

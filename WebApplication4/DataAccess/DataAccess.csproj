@@ -67,6 +67,9 @@
     <Compile Include="Models\ShoppingList.cs">
       <DependentUpon>FoodstuffsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbdcBasicShopList.cs">
+      <DependentUpon>FoodstuffsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbdcCustomerProfile.cs">
       <DependentUpon>FoodstuffsModel.tt</DependentUpon>
     </Compile>

@@ -18,16 +18,13 @@ namespace WebApplication4.Controllers
             _shoppingListRepo = new ShoppingListRepo();
         }
 
-        // GET: api/ShoppingList
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        
 
         // GET: api/ShoppingList/5
-        public IList<ShoppingListProduct> Get(int id)
+        [HttpGet]
+        public IList<ShoppingListProduct> Get(string id,int count = 15)
         {
-            return _shoppingListRepo.GetShoppingList(id);
+            return _shoppingListRepo.GetShoppingList(id, count);
         }
 
         // POST: api/ShoppingList

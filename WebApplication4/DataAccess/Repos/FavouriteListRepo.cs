@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 using DataAccess.Models;
 using DataAccess.ViewModels;
 
@@ -22,7 +23,7 @@ namespace DataAccess.Repos
 
         public IList<Product> Get(string customerCardNumber)
         {
-            tbdcPredictItem tbdcPredictItem = _context.tbdcPredictItems.Find(Convert.ToInt64(customerCardNumber));
+            tbdcPredictItem tbdcPredictItem = _context.tbdcPredictItems.FirstOrDefault(x=>x.CardNo==customerCardNumber);
             return GetProducts(tbdcPredictItem);
         }
 
@@ -31,7 +32,9 @@ namespace DataAccess.Repos
             tbdcProductExtention tbd = _context.tbdcProductExtentions.Find(inventoryId.ToString());
             return new Product(inventoryId, tbd.ProductDescription,
                 "http://www.hormelfoods.com/~/media/HormelFoods/Images/Brands/Product%20Shots/High%20Res%20Product%20Shots/spam-family-of-products.ashx",
-                tbd.Unit, Convert.ToDouble(tbd.grossretailprice));
+                tbd.Unit, Convert.ToDouble(tbd.grossretailprice),
+                
+                tbd.Departmentdescription,tbd.SubDepartmentDescription,tbd.HealthRating=="H", tbd.Food!="N");
         }
 
         private IList<Product> GetProducts(tbdcPredictItem item)
