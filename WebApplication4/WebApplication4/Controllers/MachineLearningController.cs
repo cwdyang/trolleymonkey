@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Web.Helpers;
 using System.Web.Http;
 using Newtonsoft.Json.Linq;
+using WebApplication4.Domain;
 
 namespace WebApplication4.Controllers
 {
@@ -16,52 +18,20 @@ namespace WebApplication4.Controllers
     {
 
         // GET api/<controller>
-        public JObject Get()
+        public JObject Get(JObject f)
         {
-            var result = new JObject();
-            using (var client = new HttpClient())
+
+            var req = new MachineLearningRequest(new List<string> { "sales", "discounts", "day of week", "month", "season",
+                               "timestart", "timened", "weather" });
+            var list = new List<List<string>>
             {
-                var scoreRequest = new
-                {
+                new List<string> { "5",	"1",	"3",	"6",	"Winter",			"23:00",	"23:29",	"Rain"},  
+                new List<string> { "136",	"46",	"4",	"6",	"Winter",			"15:30",	"15:59",	"Clear"},
+                new List<string> { "228",	"78",	"1",	"6",	"Winter",			"17:00",	"17:29",	"Partly cloudy"}
+            };
+            var result = req.Req(list);
 
-                    Inputs = new Dictionary<string, StringTable>() { 
-                        { 
-                            "input1", 
-                            new StringTable() 
-                            {
-                                ColumnNames = new string[] {"saleCount", "discountCount","dayOfWeek","month","season","schoolholiday","publichol","wdtstart","wdtend","weatherdescription"
-},
-                                Values = new string[,] {  { "0", "0","0","0","value","value","value","value","value","value"},  { "0", "0","0","0","value","value","value","value","value","value"},  }
-                            }
-                        },
-                                        },
-                    GlobalParameters = new Dictionary<string, string>()
-                    {
-                    }
-                };
-                const string apiKey = "p0bEX3Spi8916su2ta699/vaKzc+BGqr5Izq4wbMy+4XgESXEKCOPeXdfxDpS3A9lavBeEl9EpORDg0RDLTY8w=="; // Replace this with the API key for the web service
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
-
-                client.BaseAddress = new Uri("https://ussouthcentral.services.azureml.net/workspaces/771cf293c0e54a8c968f2c34f6f0d094/services/8b3d1825b5aa4fc0a399b2d443727320/execute?api-version=2.0&details=true");
-
-                HttpResponseMessage response = client.PostAsJsonAsync("", scoreRequest).Result;
-
-                if (response.IsSuccessStatusCode)
-                {
-                    result= JObject.Parse(response.Content.ReadAsStringAsync().Result);
-                }
-                else
-                {
-                    result.Add(string.Format("The request failed with status code: {0}", response.StatusCode));
-
-                    // Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
-                    result.Add(response.Headers.ToString());
-
-                    string responseContent = response.Content.ReadAsStringAsync().Result;
-                    result.Add(responseContent);
-                    
-                }
-            }
+            
             return result;
         }
     }
