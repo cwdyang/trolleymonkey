@@ -209,6 +209,7 @@
     <Compile Include="Controllers\StoresController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\WeatherController.cs" />
+    <Compile Include="Domain\HttpJsonRequestHelper.cs" />
     <Compile Include="Domain\MachineLearningRequest.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
