@@ -206,6 +206,7 @@
     <Compile Include="Controllers\MachineLearningController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\FavouriteListController.cs" />
+    <Compile Include="Controllers\ShoppingListController.cs" />
     <Compile Include="Controllers\StoresController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Domain\WeatherHelper.cs" />

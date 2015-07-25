@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="FoodstuffsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ShoppingList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShoppingListId" Type="int" Nullable="false" />
+          <Property Name="CardNo" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="Item" Type="bigint" Nullable="false" />
+        </EntityType>
         <EntityType Name="tbdcCustomerProfile">
           <Key>
             <PropertyRef Name="ProfileId" />
@@ -108,6 +117,7 @@
           <Property Name="Remarks" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityContainer Name="FoodstuffsModelStoreContainer">
+          <EntitySet Name="ShoppingList" EntityType="Self.ShoppingList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbdcCustomerProfile" EntityType="Self.tbdcCustomerProfile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbdcInventory" EntityType="Self.tbdcInventory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbdcPredictItems" EntityType="Self.tbdcPredictItems" Schema="dbo" store:Type="Tables" />
@@ -184,6 +194,7 @@
           <EntitySet Name="tbdcPredictItems" EntityType="FoodstuffsModel.tbdcPredictItem" />
           <EntitySet Name="tbMasterArticleDepartments" EntityType="FoodstuffsModel.tbMasterArticleDepartment" />
           <EntitySet Name="tbMasterArticleDescriptions" EntityType="FoodstuffsModel.tbMasterArticleDescription" />
+          <EntitySet Name="ShoppingLists" EntityType="FoodstuffsModel.ShoppingList" />
         </EntityContainer>
         <EntityType Name="tbdcInventory">
           <Key>
@@ -230,6 +241,15 @@
           </Key>
           <Property Name="NzpnaNo" Type="Int64" Nullable="false" />
           <Property Name="ArticleDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ShoppingList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardNo" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Item" Type="Int64" Nullable="false" />
+          <Property Name="ShoppingListId" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -342,6 +362,16 @@
               <MappingFragment StoreEntitySet="tbMasterArticleDescription">
                 <ScalarProperty Name="ArticleDescription" ColumnName="ArticleDescription" />
                 <ScalarProperty Name="NzpnaNo" ColumnName="NzpnaNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShoppingLists">
+            <EntityTypeMapping TypeName="FoodstuffsModel.ShoppingList">
+              <MappingFragment StoreEntitySet="ShoppingList">
+                <ScalarProperty Name="ShoppingListId" ColumnName="ShoppingListId" />
+                <ScalarProperty Name="Item" ColumnName="Item" />
+                <ScalarProperty Name="CardNo" ColumnName="CardNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

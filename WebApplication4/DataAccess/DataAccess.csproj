@@ -64,6 +64,9 @@
       <DependentUpon>FoodstuffsModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\IfoodstuffsEntities.cs" />
+    <Compile Include="Models\ShoppingList.cs">
+      <DependentUpon>FoodstuffsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbdcCustomerProfile.cs">
       <DependentUpon>FoodstuffsModel.tt</DependentUpon>
     </Compile>
@@ -87,6 +90,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repos\FavouriteListRepo.cs" />
+    <Compile Include="Repos\ShoppingListRepo.cs" />
     <Compile Include="ViewModels\Product.cs" />
     <Compile Include="ViewModels\ShoppingListProduct.cs" />
     <Compile Include="ViewModels\Store.cs" />

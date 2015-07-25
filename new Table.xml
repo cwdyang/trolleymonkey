@@ -1,0 +1,60 @@
+create table ShoppingList
+(
+	CardNo varchar(36) NOT NULL PRIMARY KEY,
+	Item1 bigint,
+	Item2 bigint,
+	Item3 bigint,
+	Item4 bigint,
+	Item5 bigint,
+	Item6 bigint,
+	Item7 bigint,
+	Item8 bigint,
+	Item9 bigint,
+	Item10 bigint,
+	Item11 bigint,
+	Item12 bigint,
+	Item13 bigint,
+	Item14 bigint,
+	Item15 bigint,
+	Item16 bigint,
+	Item17 bigint,
+	Item18 bigint,
+	Item19 bigint,
+	Item20 bigint,
+	Item21 bigint,
+	Item22 bigint,
+	Item23 bigint,
+	Item24 bigint,
+	Item25 bigint,
+	Item26 bigint,
+	Item27 bigint,
+	Item28 bigint,
+	Item29 bigint,
+	Item30 bigint,
+	CONSTRAINT pk_CardNo PRIMARY KEY (CardNo)
+)
+
+insert into ShoppingList
+(
+	CardNo,
+	Item1, 
+	Item2,
+	Item3,
+	Item4,
+	Item5,
+	Item6,
+	Item7,
+	Item8
+)
+values
+(
+	'40E0FE20-1C92-4AEF-8C17-B17067E9F98B',
+	12587704417,
+	13409351000,
+	17800012591,
+	17800018845,
+	20005030,
+	200078000005,
+	200216000003,
+	200415000002
+)

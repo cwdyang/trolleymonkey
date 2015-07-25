@@ -29,8 +29,10 @@ namespace DataAccess.Models
         public virtual DbSet<tbdcProductExtention> tbdcProductExtentions { get; set; }
         public virtual DbSet<tbRetailTlogStoresToProcess> tbRetailTlogStoresToProcesses { get; set; }
         public virtual DbSet<tbdcInventory> tbdcInventories { get; set; }
+        public virtual DbSet<ShoppingList> shoppingList { get; set; }
         public virtual DbSet<tbdcPredictItem> tbdcPredictItems { get; set; }
         public virtual DbSet<tbMasterArticleDepartment> tbMasterArticleDepartments { get; set; }
         public virtual DbSet<tbMasterArticleDescription> tbMasterArticleDescriptions { get; set; }
+        public virtual DbSet<ShoppingList> ShoppingLists { get; set; }
     }
 }
