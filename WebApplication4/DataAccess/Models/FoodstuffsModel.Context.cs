@@ -19,6 +19,8 @@ namespace DataAccess.Models
             : base("name=foodstuffsEntities")
         {
         }
+
+
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -28,5 +30,9 @@ namespace DataAccess.Models
         public virtual DbSet<tbdcCustomerProfile> tbdcCustomerProfiles { get; set; }
         public virtual DbSet<tbdcProductExtention> tbdcProductExtentions { get; set; }
         public virtual DbSet<tbRetailTlogStoresToProcess> tbRetailTlogStoresToProcesses { get; set; }
+        public virtual DbSet<tbdcInventory> tbdcInventories { get; set; }
+        public virtual DbSet<tbdcPredictItem> tbdcPredictItems { get; set; }
+        public virtual DbSet<tbMasterArticleDepartment> tbMasterArticleDepartments { get; set; }
+        public virtual DbSet<tbMasterArticleDescription> tbMasterArticleDescriptions { get; set; }
     }
 }
