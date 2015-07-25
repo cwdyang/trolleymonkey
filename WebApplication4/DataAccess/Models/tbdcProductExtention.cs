@@ -26,5 +26,7 @@ namespace DataAccess.Models
         public string ChildProduct { get; set; }
         public string Departmentdescription { get; set; }
         public string SubDepartmentDescription { get; set; }
+        public Nullable<decimal> grossretailprice { get; set; }
+        public string Unit { get; set; }
     }
 }

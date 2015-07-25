@@ -20,18 +20,18 @@ namespace DataAccess.Repos
             //_context.Database.SqlQuery<CREATE as Type ToString() macth the data>("dbo.sp", new[] { new SqlParameter("@", "") });
         }
 
-        public FavouritesList Get(long customerCardNumber)
+        public IList<Product> Get(string customerCardNumber)
         {
-            tbdcPredictItem tbdcPredictItem = _context.tbdcPredictItems.Find(customerCardNumber);
-            IList<Product> productList = GetProducts(tbdcPredictItem);
-
-            return new FavouritesList(tbdcPredictItem, productList);
+            tbdcPredictItem tbdcPredictItem = _context.tbdcPredictItems.Find(Convert.ToInt64(customerCardNumber));
+            return GetProducts(tbdcPredictItem);
         }
 
         private Product GetProduct(long inventoryId)
         {
-            tbMasterArticleDescription tbMasterArticleDescription = _context.tbMasterArticleDescriptions.Find(inventoryId);
-            return new Product(inventoryId, tbMasterArticleDescription.ArticleDescription);
+            tbdcProductExtention tbd = _context.tbdcProductExtentions.Find(inventoryId.ToString());
+            return new Product(inventoryId, tbd.ProductDescription,
+                "http://www.hormelfoods.com/~/media/HormelFoods/Images/Brands/Product%20Shots/High%20Res%20Product%20Shots/spam-family-of-products.ashx",
+                tbd.Unit, Convert.ToDouble(tbd.grossretailprice));
         }
 
         private IList<Product> GetProducts(tbdcPredictItem item)

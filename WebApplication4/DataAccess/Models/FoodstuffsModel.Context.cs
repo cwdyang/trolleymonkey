@@ -12,15 +12,13 @@ namespace DataAccess.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
+    
     public partial class foodstuffsEntities : DbContext, IfoodstuffsEntities
     {
         public foodstuffsEntities()
             : base("name=foodstuffsEntities")
         {
         }
-
-
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

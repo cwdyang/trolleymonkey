@@ -18,13 +18,13 @@ namespace WebApplication4.Controllers
         }
 
         // GET api/<controller>
-        public IEnumerable<FavouritesList> Get()
+        public IList<Product> Get()
         {
-            return new List<FavouritesList>();
+            return new List<Product>();
         }
 
         // GET api/<controller>/5
-        public FavouritesList Get(long id)
+        public IList<Product> Get(string id)
         {
             return _favListRepo.Get(id);
         }   

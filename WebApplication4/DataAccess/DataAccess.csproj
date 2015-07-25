@@ -88,7 +88,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repos\FavouriteListRepo.cs" />
     <Compile Include="ViewModels\Product.cs" />
-    <Compile Include="ViewModels\FavouritesList.cs" />
     <Compile Include="ViewModels\ShoppingListProduct.cs" />
     <Compile Include="ViewModels\Store.cs" />
     <Compile Include="Repos\StoreRepo.cs" />
