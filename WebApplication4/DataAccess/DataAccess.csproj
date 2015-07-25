@@ -63,6 +63,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FoodstuffsModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\IfoodstuffsEntities.cs" />
     <Compile Include="Models\tbdcCustomerProfile.cs">
       <DependentUpon>FoodstuffsModel.tt</DependentUpon>
     </Compile>

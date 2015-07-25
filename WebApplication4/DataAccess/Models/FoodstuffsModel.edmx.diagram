@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b5de4070ee95415396a48a828462850e" Name="Diagram1">
+      <Diagram DiagramId="b5de4070ee95415396a48a828462850e" Name="Diagram1" ZoomLevel="87">
         <EntityTypeShape EntityType="FoodstuffsModel.tbdcCustomerProfile" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FoodstuffsModel.tbdcProductExtention" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FoodstuffsModel.tbRetailTlogStoresToProcess" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />

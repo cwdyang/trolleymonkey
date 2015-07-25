@@ -13,13 +13,6 @@ namespace DataAccess.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
 
-    public interface IfoodstuffsEntities
-    {
-        DbSet<tbdcCustomerProfile> tbdcCustomerProfiles { get; set; }
-        DbSet<tbdcProductExtention> tbdcProductExtentions { get; set; }
-        DbSet<tbRetailTlogStoresToProcess> tbRetailTlogStoresToProcesses { get; set; }
-    }
-
     public partial class foodstuffsEntities : DbContext, IfoodstuffsEntities
     {
         public foodstuffsEntities()

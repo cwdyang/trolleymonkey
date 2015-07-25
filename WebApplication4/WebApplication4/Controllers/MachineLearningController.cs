@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using Newtonsoft.Json.Linq;
 
 namespace WebApplication4.Controllers
 {
@@ -15,9 +16,9 @@ namespace WebApplication4.Controllers
     {
 
         // GET api/<controller>
-        public IEnumerable<string> Get()
+        public JObject Get()
         {
-            var result = new List<string>();
+            var result = new JObject();
             using (var client = new HttpClient())
             {
                 var scoreRequest = new
@@ -38,7 +39,7 @@ namespace WebApplication4.Controllers
                     {
                     }
                 };
-                const string apiKey = "Z8RNo6HAvk3F5MsnJaK+zjQH3TQ4lFIOKQCFenUrNtVBlZ5ng8SBfpTcbsFrmY4gEONADqxTIIYzg9NDpvObmg=="; // Replace this with the API key for the web service
+                const string apiKey = "p0bEX3Spi8916su2ta699/vaKzc+BGqr5Izq4wbMy+4XgESXEKCOPeXdfxDpS3A9lavBeEl9EpORDg0RDLTY8w=="; // Replace this with the API key for the web service
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
 
                 client.BaseAddress = new Uri("https://ussouthcentral.services.azureml.net/workspaces/771cf293c0e54a8c968f2c34f6f0d094/services/8b3d1825b5aa4fc0a399b2d443727320/execute?api-version=2.0&details=true");
@@ -47,7 +48,7 @@ namespace WebApplication4.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
-                    result.Add(response.Content.ReadAsStringAsync().Result);
+                    result= JObject.Parse(response.Content.ReadAsStringAsync().Result);
                 }
                 else
                 {
