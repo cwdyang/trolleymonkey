@@ -42,36 +42,60 @@ angular.module('starter.controllers', [])
 })
 
 .controller('UserProfileCtrl', function($scope) {
-        $scope.profilename = "Madeleine Bird";
-      $scope.profilephoto = "img/profilephoto.jpg";
-      $scope.gender = 'F';
-      $scope.dateofbirth = '25/07/2015';
-      $scope.flybuys = '6373 6765 2131 4623';
-      $scope.address = "210 Federal St\nAuckland\nNew Zealand";
-      $scope.VegetarianYN = false;
-      $scope.VeganYN = false;
-      $scope.GreenYN = false;
-      $scope.EuropeanYN = false;
-      $scope.AsianYN = false;
-      $scope.IndianYN = false;
-      $scope.phone = "0212312314";
-        $scope.store = 20;
-      //$scope.showSelectValue = function(mySelect) {
-      //  console.log(mySelect);
-      //}
+  $scope.profilename = "Madeleine Bird";
+  $scope.profilephoto = "img/profilephoto.jpg";
+  $scope.gender = 'F';
+  $scope.dateofbirth = '25/07/2015';
+  $scope.flybuys = '6373 6765 2131 4623';
+  $scope.address = "210 Federal St\nAuckland\nNew Zealand";
+  $scope.VegetarianYN = false;
+  $scope.VeganYN = false;
+  $scope.GreenYN = false;
+  $scope.EuropeanYN = false;
+  $scope.AsianYN = false;
+  $scope.IndianYN = false;
+  $scope.phone = "0212312314";
+  $scope.store = 20;
+  //$scope.showSelectValue = function(mySelect) {
+  //  console.log(mySelect);
+  //}
 
-    })
+})
 
-    .controller('SettingsCtrl', function($scope) {
-        $scope.healthmeter = true;
-        $scope.budgetmeter = false;
-        $scope.ethicmeter = true;
+.controller('SettingsCtrl', function($scope) {
+	$scope.healthmeter = true;
+	$scope.budgetmeter = false;
+	$scope.ethicmeter = true;
 
-        //$scope.showSelectValue = function(mySelect) {
-        //  console.log(mySelect);
-        //}
+	//$scope.showSelectValue = function(mySelect) {
+	//  console.log(mySelect);
+	//}
 
-    })
+})
+
+.controller('AddItemsCtrl', function($scope) {
+	$scope.text = "add items!";
+	
+	//$scope.showSelectValue = function(mySelect) {
+	//  console.log(mySelect);
+	//}
+})
+
+.controller('MapCtrl', function($scope) {
+	$scope.text = "map!";
+	
+	//$scope.showSelectValue = function(mySelect) {
+	//  console.log(mySelect);
+	//}
+})
+
+.controller('DoneCtrl', function($scope) {
+	$scope.text = "done!";
+	
+	//$scope.showSelectValue = function(mySelect) {
+	//  console.log(mySelect);
+	//}
+})
 	
 .controller('ShoppingListCtrl', function($scope, $http) {	
 	$http.get('http://testazure.cloudapp.net/Service1.svc/GetProductsInShoppingList').

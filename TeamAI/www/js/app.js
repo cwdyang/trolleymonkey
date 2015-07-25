@@ -82,15 +82,45 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 
-      .state('app.settings', {
-        url: '/settings',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/settings.html',
-            controller: 'SettingsCtrl'
-          }
+    .state('app.settings', {
+      url: '/settings',
+      views: {
+        'menuContent': {
+  	    templateUrl: 'templates/settings.html',
+  	    controller: 'SettingsCtrl'
         }
-      })
+      }
+    })
+
+    .state('app.additems', {
+      url: '/additems',
+      views: {
+        'menuContent': {
+  	    templateUrl: 'templates/additems.html',
+  	    controller: 'AddItemsCtrl'
+        }
+      }
+    })
+
+    .state('app.map', {
+      url: '/map',
+      views: {
+        'menuContent': {
+  	    templateUrl: 'templates/map.html',
+  	    controller: 'MapCtrl'
+        }
+      }
+    })
+
+    .state('app.done', {
+      url: '/done',
+      views: {
+        'menuContent': {
+  	    templateUrl: 'templates/done.html',
+  	    controller: 'DoneCtrl'
+        }
+      }
+    })
 
 
   //  .state('app.playlists', {
