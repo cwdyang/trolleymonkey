@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Web.Http;
+﻿using System.Web.Http;
 using DataAccess.Repos;
-using DataAccess.ViewModels;
+
 
 namespace WebApplication4.Controllers
 {
@@ -11,22 +8,20 @@ namespace WebApplication4.Controllers
     public class FavouriteListController : ApiController
     {
         private readonly FavouriteListRepo _favListRepo;
+        private readonly FSContext _fsContext;
 
         public FavouriteListController()
         {
             _favListRepo = new FavouriteListRepo();
-        }
-
-        // GET api/<controller>
-        public IEnumerable<FavouritesList> Get()
-        {
-            return new List<FavouritesList>();
+            _fsContext = new FSContext();;
         }
 
         // GET api/<controller>/5
-        public FavouritesList Get(long id)
+        public object Get(int id)
         {
-            return _favListRepo.Get(id);
+            //return  _favListRepo.Get(id);
+            
+            return _fsContext.GetFavourites(id);
         }   
 
         // POST api/<controller>

@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Data;
 using System.IO;
 using System.Net;
 using System.Web.Http;
 using Newtonsoft.Json;
-using Owin;
 
 namespace WebApplication4.Controllers
 {

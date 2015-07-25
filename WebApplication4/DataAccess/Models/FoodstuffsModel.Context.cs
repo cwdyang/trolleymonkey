@@ -16,7 +16,7 @@ namespace DataAccess.Models
     public partial class foodstuffsEntities : DbContext, IfoodstuffsEntities
     {
         public foodstuffsEntities()
-            : base("name=foodstuffsEntities")
+            : base("name=DefaultConnection")
         {
         }
 
