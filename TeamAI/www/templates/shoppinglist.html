@@ -11,17 +11,14 @@
       </ion-item>
     </ion-list>
 	
-	<!--ion-list>
-      <ion-item ng-repeat="productitem in shoppinglist">
-        {{productitem.Product.PricePerUnit}}
-      </ion-item>
-    </ion-list>
-	<ion-list>
-      <ion-item ng-repeat="productitem in shoppinglist">
-        {{productitem}}
-      </ion-item>
-    </ion-list-->
+	<div style="padding-bottom:50px">
+		Total Price: ${{impVars.TotalPrice}} <br/>
+		Health Percentage: {{(impVars.HealthyCount/shoppinglist.length) * 100}} <br/>
+		Budget: ${{impVars.Budget}}
+	</div>
+	
   </ion-content>
+	
 	<div class="tabs tabs-icon-top">
 	  <a class="tab-item" href="#/app/additems">
 		<i class="icon ion-plus-circled"></i>
