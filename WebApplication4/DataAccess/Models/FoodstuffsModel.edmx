@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FoodstuffsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FoodstuffsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tbdcCustomerProfile">
           <Key>
             <PropertyRef Name="ProfileId" />
@@ -24,6 +24,35 @@
           <Property Name="BasicShoppingFrequencyWM" Type="varchar" MaxLength="1" />
           <Property Name="CreatedDateTime" Type="datetime" />
         </EntityType>
+        <EntityType Name="tbdcInventory">
+          <Key>
+            <PropertyRef Name="InventoryId" />
+          </Key>
+          <Property Name="InventoryId" Type="bigint" Nullable="false" />
+          <Property Name="ProfileId" Type="bigint" Nullable="false" />
+          <Property Name="NzpnaNo" Type="bigint" Nullable="false" />
+          <Property Name="InventoryQuantity" Type="numeric" Precision="8" Scale="2" />
+          <Property Name="InventoryUnits" Type="varchar" MaxLength="25" />
+          <Property Name="InventoryApprox" Type="varchar" MaxLength="20" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbdcPredictItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CardNo" Type="varchar" MaxLength="250" />
+          <Property Name="Item1" Type="varchar" MaxLength="250" />
+          <Property Name="Item2" Type="varchar" MaxLength="250" />
+          <Property Name="Item3" Type="varchar" MaxLength="250" />
+          <Property Name="Item4" Type="varchar" MaxLength="250" />
+          <Property Name="Item5" Type="varchar" MaxLength="250" />
+          <Property Name="Item6" Type="varchar" MaxLength="250" />
+          <Property Name="Item7" Type="varchar" MaxLength="250" />
+          <Property Name="Item8" Type="varchar" MaxLength="250" />
+          <Property Name="Item9" Type="varchar" MaxLength="250" />
+          <Property Name="Item10" Type="varchar" MaxLength="250" />
+        </EntityType>
         <EntityType Name="tbdcProductExtention">
           <Key>
             <PropertyRef Name="NzpnaNo" />
@@ -40,6 +69,23 @@
           <Property Name="ChildProduct" Type="varchar" MaxLength="1" />
           <Property Name="Departmentdescription" Type="varchar" MaxLength="35" />
           <Property Name="SubDepartmentDescription" Type="varchar" MaxLength="35" />
+        </EntityType>
+        <EntityType Name="tbMasterArticleDepartment">
+          <Key>
+            <PropertyRef Name="DepartmentNo" />
+            <PropertyRef Name="SubDepartmentNo" />
+          </Key>
+          <Property Name="DepartmentNo" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="SubDepartmentNo" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="DepartmentDescription" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="SubDepartmentDescription" Type="varchar" MaxLength="35" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbMasterArticleDescription">
+          <Key>
+            <PropertyRef Name="NzpnaNo" />
+          </Key>
+          <Property Name="NzpnaNo" Type="bigint" Nullable="false" />
+          <Property Name="ArticleDescription" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="tbRetailTlogStoresToProcess">
           <Key>
@@ -61,11 +107,14 @@
         </EntityType>
         <EntityContainer Name="FoodstuffsModelStoreContainer">
           <EntitySet Name="tbdcCustomerProfile" EntityType="Self.tbdcCustomerProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbdcInventory" EntityType="Self.tbdcInventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbdcPredictItems" EntityType="Self.tbdcPredictItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbdcProductExtention" EntityType="Self.tbdcProductExtention" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbMasterArticleDepartment" EntityType="Self.tbMasterArticleDepartment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbMasterArticleDescription" EntityType="Self.tbMasterArticleDescription" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbRetailTlogStoresToProcess" EntityType="Self.tbRetailTlogStoresToProcess" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FoodstuffsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -127,7 +176,57 @@
           <EntitySet Name="tbdcCustomerProfiles" EntityType="Self.tbdcCustomerProfile" />
           <EntitySet Name="tbdcProductExtentions" EntityType="Self.tbdcProductExtention" />
           <EntitySet Name="tbRetailTlogStoresToProcesses" EntityType="Self.tbRetailTlogStoresToProcess" />
+          <EntitySet Name="tbdcInventories" EntityType="FoodstuffsModel.tbdcInventory" />
+          <EntitySet Name="tbdcPredictItems" EntityType="FoodstuffsModel.tbdcPredictItem" />
+          <EntitySet Name="tbMasterArticleDepartments" EntityType="FoodstuffsModel.tbMasterArticleDepartment" />
+          <EntitySet Name="tbMasterArticleDescriptions" EntityType="FoodstuffsModel.tbMasterArticleDescription" />
         </EntityContainer>
+        <EntityType Name="tbdcInventory">
+          <Key>
+            <PropertyRef Name="InventoryId" />
+          </Key>
+          <Property Name="InventoryId" Type="Int64" Nullable="false" />
+          <Property Name="ProfileId" Type="Int64" Nullable="false" />
+          <Property Name="NzpnaNo" Type="Int64" Nullable="false" />
+          <Property Name="InventoryQuantity" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="InventoryUnits" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="InventoryApprox" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbdcPredictItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardNo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Item1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Item2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Item3" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Item4" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Item5" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Item6" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Item7" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Item8" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Item9" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Item10" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbMasterArticleDepartment">
+          <Key>
+            <PropertyRef Name="DepartmentNo" />
+            <PropertyRef Name="SubDepartmentNo" />
+          </Key>
+          <Property Name="DepartmentNo" Type="Decimal" Nullable="false" Precision="2" Scale="0" />
+          <Property Name="SubDepartmentNo" Type="Decimal" Nullable="false" Precision="3" Scale="0" />
+          <Property Name="DepartmentDescription" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="SubDepartmentDescription" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbMasterArticleDescription">
+          <Key>
+            <PropertyRef Name="NzpnaNo" />
+          </Key>
+          <Property Name="NzpnaNo" Type="Int64" Nullable="false" />
+          <Property Name="ArticleDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -188,6 +287,55 @@
                 <ScalarProperty Name="LastUpdateTime" ColumnName="LastUpdateTime" />
                 <ScalarProperty Name="LastUpdateUser" ColumnName="LastUpdateUser" />
                 <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbdcInventories">
+            <EntityTypeMapping TypeName="FoodstuffsModel.tbdcInventory">
+              <MappingFragment StoreEntitySet="tbdcInventory">
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="InventoryApprox" ColumnName="InventoryApprox" />
+                <ScalarProperty Name="InventoryUnits" ColumnName="InventoryUnits" />
+                <ScalarProperty Name="InventoryQuantity" ColumnName="InventoryQuantity" />
+                <ScalarProperty Name="NzpnaNo" ColumnName="NzpnaNo" />
+                <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+                <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbdcPredictItems">
+            <EntityTypeMapping TypeName="FoodstuffsModel.tbdcPredictItem">
+              <MappingFragment StoreEntitySet="tbdcPredictItems">
+                <ScalarProperty Name="Item10" ColumnName="Item10" />
+                <ScalarProperty Name="Item9" ColumnName="Item9" />
+                <ScalarProperty Name="Item8" ColumnName="Item8" />
+                <ScalarProperty Name="Item7" ColumnName="Item7" />
+                <ScalarProperty Name="Item6" ColumnName="Item6" />
+                <ScalarProperty Name="Item5" ColumnName="Item5" />
+                <ScalarProperty Name="Item4" ColumnName="Item4" />
+                <ScalarProperty Name="Item3" ColumnName="Item3" />
+                <ScalarProperty Name="Item2" ColumnName="Item2" />
+                <ScalarProperty Name="Item1" ColumnName="Item1" />
+                <ScalarProperty Name="CardNo" ColumnName="CardNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbMasterArticleDepartments">
+            <EntityTypeMapping TypeName="FoodstuffsModel.tbMasterArticleDepartment">
+              <MappingFragment StoreEntitySet="tbMasterArticleDepartment">
+                <ScalarProperty Name="SubDepartmentDescription" ColumnName="SubDepartmentDescription" />
+                <ScalarProperty Name="DepartmentDescription" ColumnName="DepartmentDescription" />
+                <ScalarProperty Name="SubDepartmentNo" ColumnName="SubDepartmentNo" />
+                <ScalarProperty Name="DepartmentNo" ColumnName="DepartmentNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbMasterArticleDescriptions">
+            <EntityTypeMapping TypeName="FoodstuffsModel.tbMasterArticleDescription">
+              <MappingFragment StoreEntitySet="tbMasterArticleDescription">
+                <ScalarProperty Name="ArticleDescription" ColumnName="ArticleDescription" />
+                <ScalarProperty Name="NzpnaNo" ColumnName="NzpnaNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

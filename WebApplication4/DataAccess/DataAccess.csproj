@@ -67,13 +67,28 @@
     <Compile Include="Models\tbdcCustomerProfile.cs">
       <DependentUpon>FoodstuffsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbdcInventory.cs">
+      <DependentUpon>FoodstuffsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbdcPredictItem.cs">
+      <DependentUpon>FoodstuffsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbdcProductExtention.cs">
+      <DependentUpon>FoodstuffsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbMasterArticleDepartment.cs">
+      <DependentUpon>FoodstuffsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbMasterArticleDescription.cs">
       <DependentUpon>FoodstuffsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbRetailTlogStoresToProcess.cs">
       <DependentUpon>FoodstuffsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repos\FavouriteListRepo.cs" />
+    <Compile Include="ViewModels\Product.cs" />
+    <Compile Include="ViewModels\FavouritesList.cs" />
     <Compile Include="ViewModels\Store.cs" />
     <Compile Include="Repos\StoreRepo.cs" />
     <Compile Include="ViewModels\Settings.cs" />
