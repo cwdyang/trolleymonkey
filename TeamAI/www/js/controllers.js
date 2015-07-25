@@ -117,63 +117,61 @@ angular.module('starter.controllers', [])
           }
         });
       };
-})
 
-.controller('MeterCtrl', function($scope) {
-  $scope.healthMeter = null;
+      $scope.healthMeter = null;
       $scope.budgetMeter = null;
-  $scope.showMeters = function() {
-    $scope.healthMeter = c3.generate({
-      bindto: '#healthMeter',
-      data: {
-        columns: [
-          ['data', 91.4]
-        ],
-        type: 'gauge',
-      },
-      color: {
-        pattern: ['#FF0000','#FF8000', '#008000'],
-        threshold: {
-          values: [10, 80, 100]
-        }
-      },
-      size: {
-        height: 180
-      }
+      $scope.showMeters = function() {
+        $scope.healthMeter = c3.generate({
+          bindto: '#healthMeter',
+          data: {
+            columns: [
+              ['data', 91.4]
+            ],
+            type: 'gauge',
+          },
+          color: {
+            pattern: ['#FF0000','#FF8000', '#008000'],
+            threshold: {
+              values: [10, 80, 100]
+            }
+          },
+          size: {
+            height: 180
+          }
 
-    });
+        });
 
-    $scope.budgetMeter = c3.generate({
-      bindto: '#budgetMeter',
-      data: {
-        columns: [
-          ['data', 110]
-        ],
-        type: 'gauge',
-      },
-      color: {
-        pattern: ['#008000','#FF8000', '#FF0000'],
-        threshold: {
-          max: 200,
-          values: [90, 100]
-        }
-      },
-      size: {
-        height: 180
-      }
+        $scope.budgetMeter = c3.generate({
+          bindto: '#budgetMeter',
+          data: {
+            columns: [
+              ['data', 110]
+            ],
+            type: 'gauge',
+          },
+          color: {
+            pattern: ['#008000','#FF8000', '#FF0000'],
+            threshold: {
+              values: [90, 100]
+            }
+          },
+          
+          size: {
+            height: 180
+          }
 
-    });
+        });
 
-    $scope.healthMeter.setTimeout(function () {
-      $scope.healthMeter.load({
-        columns: [['data', 10]]
-      });
-      $scope.budgetMeter.load({
-        columns: [['data', 10]]
-      });
-    }, 3000);
+        $scope.healthMeter.setTimeout(function () {
+          $scope.healthMeter.load({
+            columns: [['data', 10]]
+          });
+          $scope.budgetMeter.load({
+            columns: [['data', 10]]
+          });
+        }, 3000);
 
-  };
+      };
 })
 	
 .controller('ShoppingListCtrl', function($scope, $http) {	
