@@ -90,11 +90,18 @@ angular.module('starter.controllers', [])
 })
 
 .controller('DoneCtrl', function($scope) {
-	$scope.text = "done!";
-	
-	//$scope.showSelectValue = function(mySelect) {
-	//  console.log(mySelect);
-	//}
+      $scope.chart = null;
+      $scope.showGraph = function() {
+        $scope.chart = c3.generate({
+          bindto: '#chart',
+          data: {
+            columns: [
+              ['number of cats', 30, 200, 100, 400, 150, 250],
+              ['data2', 50, 20, 10, 40, 15, 25]
+            ]
+          }
+        });
+      };
 })
 	
 .controller('ShoppingListCtrl', function($scope, $http) {	
@@ -120,4 +127,5 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ProductCtrl', function($scope, $stateParams) {
-});
+})
+;
