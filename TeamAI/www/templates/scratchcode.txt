@@ -1,0 +1,57 @@
+<ion-view view-title="Add Product">
+  <ion-content>
+    <label class="item item-input">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="search" placeholder="Search">
+    </label>
+
+
+    <button class="button button-full button-royal">
+      Scan Product
+    </button>
+
+    <h4 style="padding-left: 15px; padding-top:8px;">Suggested for you</h4>
+    <ion-slide-box style="height:200px;" on-slide-changed="slideHasChanged($index)">
+      <ion-slide>
+        <div class="row">
+          <div class="col col-33 item item-image" >
+            <img src="img\ionic.png" style="padding:5px !important;">
+          </div>
+          <div class="col col-33 item item-image">
+            <img src="img\ionic.png" style="padding:5px !important;">
+          </div>
+          <div class="col col-33 item item-image" >
+            <img src="img\ionic.png" style="padding:5px !important;">
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="row">
+          <div class="col col-33 item item-image" >
+            <img src="img\ionic.png" style="padding:5px !important;">
+          </div>
+          <div class="col col-33 item item-image">
+            <img src="img\ionic.png" style="padding:5px !important;">
+          </div>
+          <div class="col col-33 item item-image" >
+            <img src="img\ionic.png" style="padding:5px !important;">
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="row">
+          <div class="col col-33 item item-image" >
+            <img src="img\ionic.png" style="padding:5px !important;">
+          </div>
+          <div class="col col-33 item item-image">
+            <img src="img\ionic.png" style="padding:5px !important;">
+          </div>
+          <div class="col col-33 item item-image" >
+            <img src="img\ionic.png" style="padding:5px !important;">
+          </div>
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+
+  </ion-content>
+</ion-view>
