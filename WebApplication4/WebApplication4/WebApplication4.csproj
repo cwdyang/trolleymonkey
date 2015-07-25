@@ -208,7 +208,7 @@
     <Compile Include="Controllers\FavouriteListController.cs" />
     <Compile Include="Controllers\StoresController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="Controllers\WeatherController.cs" />
+    <Compile Include="Domain\WeatherHelper.cs" />
     <Compile Include="Domain\HttpJsonRequestHelper.cs" />
     <Compile Include="Domain\MachineLearningRequest.cs" />
     <Compile Include="Global.asax.cs">

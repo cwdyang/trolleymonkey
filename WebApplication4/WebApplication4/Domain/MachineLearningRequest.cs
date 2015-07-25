@@ -13,12 +13,9 @@ namespace WebApplication4.Domain
 
         public MachineLearningRequest(List<string> columnNames)
         {
-            _columnNames = columnNames ??
-                           new List<string>
-                           {
-                               "saleCount", "discountCount", "dayOfWeek", "month", "season", "schoolholiday", "publichol",
-                               "wdtstart", "wdtend", "weatherdescription"
-                           };
+            _columnNames = columnNames;
+            if(columnNames==null)
+                throw new Exception("need columns");
         }
 
         public JObject Req(List<List<string>> parameters)
@@ -38,10 +35,10 @@ namespace WebApplication4.Domain
                 scoreRequest["Inputs"]["input1"]["Values"] = columns;
                 scoreRequest["GlobalParameters"] = new JObject();
 
-                const string apiKey = "p0bEX3Spi8916su2ta699/vaKzc+BGqr5Izq4wbMy+4XgESXEKCOPeXdfxDpS3A9lavBeEl9EpORDg0RDLTY8w=="; // Replace this with the API key for the web service
+                const string apiKey = "IIeq54kFAHq/wcDb+eEjJMIFdz4rKp6GlBI+7U+LjDxHQFaMborPveuTJ8ro0sgqrhUEX9b44Y7EPkTB6O0Ucg=="; // Replace this with the API key for the web service
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
 
-                client.BaseAddress = new Uri("https://ussouthcentral.services.azureml.net/workspaces/771cf293c0e54a8c968f2c34f6f0d094/services/8b3d1825b5aa4fc0a399b2d443727320/execute?api-version=2.0&details=true");
+                client.BaseAddress = new Uri("https://ussouthcentral.services.azureml.net/workspaces/771cf293c0e54a8c968f2c34f6f0d094/services/710f683e734a44c8b36577746989bdf7/execute?api-version=2.0&details=true");
 
                 var response = client.PostAsJsonAsync("", scoreRequest).Result;
 

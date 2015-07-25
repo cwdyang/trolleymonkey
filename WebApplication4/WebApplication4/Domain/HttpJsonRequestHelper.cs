@@ -5,9 +5,9 @@ using Newtonsoft.Json.Linq;
 
 namespace WebApplication4.Domain
 {
-    public class HttpJsonRequestHelper
+     class HttpJsonRequestHelper
     {
-        public static JObject MakeJsonHttpPostRequest(string url, JObject data, HttpClient clientToUse = null)
+        /*public static JObject MakeJsonHttpPostRequest(string url, JObject data, HttpClient clientToUse = null)
         {
             var result = new JObject();
             using (var client = clientToUse ?? new HttpClient())
@@ -55,6 +55,6 @@ namespace WebApplication4.Domain
             }
             return result;
             //trafficRequest.ContentType = "application/json";
-        }
+        }*/
     }
 }

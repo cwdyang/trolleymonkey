@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Data;
 using System.IO;
 using System.Net;
-using System.Web.Http;
 using Newtonsoft.Json;
-using Owin;
 
-namespace WebApplication4.Controllers
+namespace WebApplication4.Domain
 {
-    public class WeatherController : ApiController
+    public class WeatherHelper
     {
         public string GetCurrentWeather()
         {
@@ -16,20 +13,20 @@ namespace WebApplication4.Controllers
             weatherRequest.ContentType = "application/json";
 
             var weatherResults = new StreamReader(weatherRequest.GetResponse().GetResponseStream()).ReadToEnd();
-            Rootobject deserializeObject = JsonConvert.DeserializeObject<Rootobject>(weatherResults);
+            var deserializeObject = JsonConvert.DeserializeObject<Rootobject>(weatherResults);
             return MapWeatherCode(deserializeObject.weather.curren_weather[0].weather_code);
         }
 
         public string MapWeatherCode(string code)
         {
-            int intCode = Convert.ToInt32(code);
+            var intCode = Convert.ToInt32(code);
             string weatherText;
 
             // #themappening
             switch (intCode)
             {
                 case 1:
-                    weatherText = "Partly couldy";
+                    weatherText = "Partly cloudy";
                     break;
                 case 10:
                     weatherText = "Few clouds";
