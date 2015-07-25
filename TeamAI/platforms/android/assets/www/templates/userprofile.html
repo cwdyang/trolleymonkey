@@ -1,0 +1,100 @@
+<ion-view view-title="Profile">
+  <ion-content ng-controller="UserProfileCtrl">
+    <!--<h1>User Profile</h1>-->
+
+      <img data-ng-src="data:image/png;base64,{{profilephoto}}" alt="Description" />
+
+      <label class="item item-input">
+          <span class="input-label">Full Name</span>
+          <input type="text" ng-model="profilename" value="{{profilename}}" required>
+      </label>
+
+          <label class="item item-input item-select">
+              <div class="input-label">
+                  Gender
+              </div>
+              <select ng-model="gender">
+                  <option value= 'M'>Male</option>
+                  <option value = 'F'>Female</option>
+              </select>
+          </label>
+
+          <label class="item item-input">
+              <span class="input-label">Date of Birth</span>
+              <input type="date" ng-model="dateofbirth" value="{{dateofbirth}}">
+          </label>
+
+      <label class="item item-input">
+      <span class="input-label">Fly Buys</span>
+      <input type="text" ng-model="flybuys" placeholder="xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" size="35" ng-minlength="35" ng-maxlength="35">
+
+  </label>
+
+      <label class="item item-input">
+          <span class="input-label">Address</span>
+          <input type="text" ng-model="address" placeholder="Customer Address" value="{{address}}">
+
+      </label>
+
+
+      <label class="item item-input">
+          <span class="input-label">Phone</span>
+
+          <input type="text" ng-model="phone" placeholder="Enter phone number" value="{{phone}}">
+      </label>
+
+      Dietary options
+      <ul class="list">
+
+          <li class="item item-checkbox">
+              <label class="checkbox">
+                  <input type="checkbox" ng-model="VegetarianYN">
+              </label>
+              Vegetarian
+          </li>
+
+          <li class="item item-checkbox">
+              <label class="checkbox">
+                  <input type="checkbox" ng-model="VeganYN">
+              </label>
+              Vegan
+          </li>
+
+          <li class="item item-checkbox">
+              <label class="checkbox">
+                  <input type="checkbox" ng-model="GreenYN">
+              </label>
+              Green
+          </li>
+
+      </ul>
+
+      Cuisine preference
+      <ul class="list">
+
+          <li class="item item-checkbox">
+              <label class="checkbox">
+                  <input type="checkbox" ng-model="EuropeanYN">
+              </label>
+              European
+          </li>
+
+          <li class="item item-checkbox">
+              <label class="checkbox">
+                  <input type="checkbox" ng-model="AsianYN">
+              </label>
+              Asian
+          </li>
+
+          <li class="item item-checkbox">
+              <label class="checkbox">
+                  <input type="checkbox" ng-model="IndianYN">
+              </label>
+              Indian
+          </li>
+
+      </ul>
+
+
+  </ion-content>
+</ion-view>

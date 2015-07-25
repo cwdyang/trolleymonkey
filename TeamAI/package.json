@@ -1,7 +1,7 @@
 {
-  "name": "teamai",
+  "name": "buyaway",
   "version": "1.0.0",
-  "description": "TeamAI: An Ionic project",
+  "description": "buyaway: An Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^1.3.3",
