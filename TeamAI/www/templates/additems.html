@@ -1,11 +1,53 @@
 <ion-view view-title="Add Items">
   <ion-content>
-    <div>
-		<p>SUGGESTIONS</p>
-	</div>
-	<div>
-		<a class="button button-positive">Scan</a>
-		<a class="button button-positive">Search</a>
-	</div>
+    <h4 style="padding-left: 15px; padding-top:8px;">Suggested for you</h4>
+    <ion-slide-box style="height:200px;" on-slide-changed="slideHasChanged($index)">
+      <ion-slide>
+        <div class="row">
+          <div class="col col-33 item item-image" >
+            <img src="img\ionic.png" style="padding:5px !important;">
+          </div>
+          <div class="col col-33 item item-image">
+            <img src="img\ionic.png" style="padding:5px !important;">
+          </div>
+          <div class="col col-33 item item-image" >
+            <img src="img\ionic.png" style="padding:5px !important;">
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="row">
+          <div class="col col-33 item item-image" >
+            <img src="img\ionic.png" style="padding:5px !important;">
+          </div>
+          <div class="col col-33 item item-image">
+            <img src="img\ionic.png" style="padding:5px !important;">
+          </div>
+          <div class="col col-33 item item-image" >
+            <img src="img\ionic.png" style="padding:5px !important;">
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="row">
+          <div class="col col-33 item item-image" >
+            <img src="img\ionic.png" style="padding:5px !important;">
+          </div>
+          <div class="col col-33 item item-image">
+            <img src="img\ionic.png" style="padding:5px !important;">
+          </div>
+          <div class="col col-33 item item-image" >
+            <img src="img\ionic.png" style="padding:5px !important;">
+          </div>
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+	
+    <a class="button button-block button-positive" href="#/app/scan">
+      Scan Item
+    </a>
+    <a class="button button-block button-positive" href="#/app/search">
+      Search Item
+    </a>
   </ion-content>
 </ion-view>
