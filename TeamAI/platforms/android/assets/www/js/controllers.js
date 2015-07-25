@@ -46,7 +46,7 @@ angular.module('starter.controllers', [])
       $scope.profilephoto = "img/profilephoto.jpg";
       $scope.gender = 'F';
       $scope.dateofbirth = '25/07/2015';
-      $scope.flybuys = '40E0FE20-1C92-4AEF-8C17-B17067E9F98B';
+      $scope.flybuys = '6373 6765 2131 4623';
       $scope.address = "210 Federal St\nAuckland\nNew Zealand";
       $scope.VegetarianYN = false;
       $scope.VeganYN = false;
