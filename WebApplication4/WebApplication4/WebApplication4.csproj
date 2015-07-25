@@ -263,6 +263,27 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Static\product-images\4011.png" />
+    <Content Include="Static\product-images\8714789162546.png" />
+    <Content Include="Static\product-images\9300673815811.png" />
+    <Content Include="Static\product-images\9300682017428.png" />
+    <Content Include="Static\product-images\9300682017442.png" />
+    <Content Include="Static\product-images\9310072000282.png" />
+    <Content Include="Static\product-images\9310072001128.png" />
+    <Content Include="Static\product-images\9310072001777.png" />
+    <Content Include="Static\product-images\9310072021591.png" />
+    <Content Include="Static\product-images\9400566002073.png" />
+    <Content Include="Static\product-images\9403142001538.png" />
+    <Content Include="Static\product-images\94142501.png" />
+    <Content Include="Static\product-images\9414674110759.png" />
+    <Content Include="Static\product-images\9414967008411.png" />
+    <Content Include="Static\product-images\9414967205681.png" />
+    <Content Include="Static\product-images\9414967278920.png" />
+    <Content Include="Static\product-images\9414987000884.png" />
+    <Content Include="Static\product-images\9415652569781.png" />
+    <Content Include="Static\product-images\9415652697149.png" />
+    <Content Include="Static\product-images\9421903084026.png" />
+    <Content Include="Static\product-images\9421903084071.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
