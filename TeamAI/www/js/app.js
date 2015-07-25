@@ -112,6 +112,26 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 
+    .state('app.scan', {
+      url: '/scan',
+      views: {
+        'menuContent': {
+  	    templateUrl: 'templates/scan.html',
+  	    controller: 'ScanCtrl'
+        }
+      }
+    })
+
+    .state('app.search', {
+      url: '/search',
+      views: {
+        'menuContent': {
+  	    templateUrl: 'templates/search.html',
+  	    controller: 'SearchCtrl'
+        }
+      }
+    })
+
     .state('app.done', {
       url: '/done',
       views: {

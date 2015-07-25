@@ -89,6 +89,21 @@ angular.module('starter.controllers', [])
 	//}
 })
 
+.controller('ScanCtrl', function($scope) {
+	$scope.text = "scan!";
+	
+	//$scope.showSelectValue = function(mySelect) {
+	//  console.log(mySelect);
+	//}
+})
+
+.controller('SearchCtrl', function($scope) {
+		
+	//$scope.showSelectValue = function(mySelect) {
+	//  console.log(mySelect);
+	//}
+})
+
 .controller('DoneCtrl', function($scope) {
       $scope.chart = null;
       $scope.showGraph = function() {
