@@ -35,6 +35,7 @@ angular.module('starter.controllers', [])
 	navigator.vibrate(1000);
 	
 	
+	
 	cordova.plugins.barcodeScanner.scan(
 	function (result) {
 	alert("We got a barcode\n" +
@@ -55,7 +56,21 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
+.controller('PlaylistsCtrl', function($scope,$http) {
+
+alert($http);
+	
+	$http.get('http://testazure.cloudapp.net/Service1.svc/Get1DataNoParams').
+        success(function(data) {
+			alert("yyy" + data);
+            $scope.addresslist = data;
+        })
+        .
+        error(function(data, status, headers, config) {
+			alert("xxx"+data);
+            $scope.addresslist = status;
+        });
+		
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
