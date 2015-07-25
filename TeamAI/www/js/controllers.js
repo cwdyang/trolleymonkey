@@ -106,7 +106,17 @@ angular.module('starter.controllers', [])
 	error(function (data, status, headers, config) {
 		//alert("Fail" + data);
 		$scope.shoppinglist = status ;
-	});	  	  
+	});	
+	
+	$scope.removeProduct = function($id) {
+		
+		for (var i = 0; i < $scope.shoppinglist.length; i++) {
+			if ($scope.shoppinglist[i].ShoppingListProductId == $id) {
+				alert($scope.shoppinglist[i].Quantity);
+				$scope.shoppinglist.splice(i--, 1);
+			}
+		}
+	}	
 })
 
 .controller('ProductCtrl', function($scope, $stateParams) {
