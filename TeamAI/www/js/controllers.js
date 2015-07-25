@@ -177,21 +177,39 @@ angular.module('starter.controllers', [])
 })
 	
 .controller('ShoppingListCtrl', function($scope, $http) {	
+
+	//$scope.shoppinglist = "tempValue";
+	
 	$http.get('http://testazure.cloudapp.net/Service1.svc/GetProductsInShoppingList').
 	success(function (data) {
-		//alert("Success" + data);
 		$scope.shoppinglist = data;	
+		
+		$scope.impVars = {};
+		$scope.impVars.TotalPrice = 0;
+		$scope.impVars.HealthyCount = 0;
+		$scope.impVars.Budget = 10;
+		
+		for (var i = 0; i < $scope.shoppinglist.length; i++) {
+			$scope.impVars.TotalPrice = $scope.impVars.TotalPrice + ($scope.shoppinglist[i].Quantity * $scope.shoppinglist[i].Product.PricePerUnit);
+			if($scope.shoppinglist[i].Product.IsHealthy == true)
+			{
+				$scope.impVars.HealthyCount = $scope.impVars.HealthyCount + 1;
+			}
+		}
 	}).
 	error(function (data, status, headers, config) {
-		//alert("Fail" + data);
 		$scope.shoppinglist = status ;
 	});	
 	
-	$scope.removeProduct = function($id) {
-		
+	$scope.removeProduct = function($id) {		
 		for (var i = 0; i < $scope.shoppinglist.length; i++) {
 			if ($scope.shoppinglist[i].ShoppingListProductId == $id) {
-				alert($scope.shoppinglist[i].Quantity);
+				if($scope.shoppinglist[i].Product.IsHealthy == true)
+				{					
+					$scope.impVars.HealthyCount = $scope.impVars.HealthyCount - 1;					
+				}
+				
+				$scope.impVars.TotalPrice = $scope.impVars.TotalPrice - ($scope.shoppinglist[i].Quantity * $scope.shoppinglist[i].Product.PricePerUnit);
 				$scope.shoppinglist.splice(i--, 1);
 			}
 		}
