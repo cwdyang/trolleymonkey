@@ -62,6 +62,17 @@ angular.module('starter.controllers', [])
 
     })
 
+    .controller('SettingsCtrl', function($scope) {
+        $scope.healthmeter = true;
+        $scope.budgetmeter = false;
+        $scope.ethicmeter = true;
+
+        //$scope.showSelectValue = function(mySelect) {
+        //  console.log(mySelect);
+        //}
+
+    })
+
     .controller('ShoppingListCtrl', function($scope, $http) {
       $scope.testVar = "Test value";
       $http.get('http://testazure.cloudapp.net/Service1.svc/Get1DataNoParams').

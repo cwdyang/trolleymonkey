@@ -36,7 +36,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: '/userprofile',
       views: {
         'menuContent': {
-          templateUrl: 'templates/userprofile.html'
+          templateUrl: 'templates/userprofile.html',
+          controller: 'UserProfileCtrl'
         }
       }
     })
@@ -74,7 +75,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         url: '/settings',
         views: {
           'menuContent': {
-            templateUrl: 'templates/settings.html'
+            templateUrl: 'templates/settings.html',
+            controller: 'SettingsCtrl'
           }
         }
       })
