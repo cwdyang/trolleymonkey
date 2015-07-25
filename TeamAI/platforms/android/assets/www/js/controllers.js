@@ -72,33 +72,18 @@ angular.module('starter.controllers', [])
         //}
 
     })
-
-    .controller('ShoppingListCtrl', function($scope, $http) {
-      $scope.testVar = "Test value";
-      $http.get('http://testazure.cloudapp.net/Service1.svc/Get1DataNoParams').
-          success(function (data) {
-            $scope.testVar = "SUCCESS" ;
-            alert("Success" + data);
-          }).
-          error(function (data, status, headers, config) {
-            $scope.testVar = status ;
-            alert("Fail" + data);
-          });
-
-
-    })
-
-
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+	
+.controller('ShoppingListCtrl', function($scope, $http) {	
+	$http.get('http://testazure.cloudapp.net/Service1.svc/GetProductsInShoppingList').
+	success(function (data) {
+		//alert("Success" + data);
+		$scope.shoppinglist = data;	
+	}).
+	error(function (data, status, headers, config) {
+		//alert("Fail" + data);
+		$scope.shoppinglist = status ;
+	});	  	  
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('ProductCtrl', function($scope, $stateParams) {
 });

@@ -42,12 +42,23 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 
-  .state('app.shoppinglist', {
+  
+.state('app.shoppinglist', {
     url: '/shoppinglist',
     views: {
       'menuContent': {
         templateUrl: 'templates/shoppinglist.html',
         controller: 'ShoppingListCtrl'
+      }
+    }
+  })
+  
+  .state('app.single', {
+    url: '/shoppinglist/:productid',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/product.html',
+        controller: 'ProductCtrl'
       }
     }
   })
