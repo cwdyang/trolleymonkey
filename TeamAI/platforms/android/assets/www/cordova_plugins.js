@@ -54,6 +54,13 @@ module.exports = [
         "clobbers": [
             "cordova.plugins.barcodeScanner"
         ]
+    },
+    {
+        "file": "plugins/com.megster.cordova.ble/www/ble.js",
+        "id": "com.megster.cordova.ble.ble",
+        "clobbers": [
+            "ble"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -66,7 +73,8 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.0.0",
     "cordova-plugin-vibration": "1.2.0",
     "phonegap-plugin-barcodescanner": "3.1.2",
-    "cordova-plugin-geolocation": "1.0.1"
+    "cordova-plugin-geolocation": "1.0.1",
+    "com.megster.cordova.ble": "0.1.9"
 }
 // BOTTOM OF METADATA
 });
