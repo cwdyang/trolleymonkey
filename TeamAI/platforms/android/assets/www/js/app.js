@@ -19,7 +19,12 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-  });
+	
+	
+	
+	
+		  }
+	);
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -67,8 +72,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: '/trend',
       views: {
         'menuContent': {
-          templateUrl: 'templates/trend.html'
-
+          templateUrl: 'templates/trend.html',
+          controller: 'MeterCtrl'
         }
       }
     })
@@ -112,15 +117,36 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 
-    .state('app.done', {
-      url: '/done',
+    .state('app.scan', {
+      url: '/scan',
       views: {
         'menuContent': {
-  	    templateUrl: 'templates/done.html',
-  	    controller: 'DoneCtrl'
+  	    templateUrl: 'templates/scan.html',
+  	    controller: 'ScanCtrl'
         }
       }
     })
+
+    .state('app.search', {
+      url: '/search',
+      views: {
+        'menuContent': {
+  	    templateUrl: 'templates/search.html',
+  	    controller: 'SearchCtrl'
+        }
+      }
+    })
+
+    .state('app.done', {
+        url: '/done',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/done.html',
+            controller: 'DoneCtrl'
+          }
+        }
+      })
+
 
 
   //  .state('app.playlists', {

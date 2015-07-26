@@ -31,8 +31,7 @@ namespace DataAccess.Repos
         {
             tbdcProductExtention tbd = _context.tbdcProductExtentions.Find(inventoryId.ToString());
             return new Product(inventoryId, tbd.ProductDescription,
-
-                string.Format("Content/product-images/{0}.png", inventoryId),
+                string.Format("Static/product-images/{0}.png", inventoryId),
                 tbd.Unit, Convert.ToDouble(tbd.grossretailprice),
                 tbd.Departmentdescription,tbd.SubDepartmentDescription,tbd.HealthRating=="H", tbd.Food!="N");
         }
