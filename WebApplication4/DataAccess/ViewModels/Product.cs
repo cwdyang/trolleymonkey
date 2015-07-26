@@ -51,7 +51,7 @@ public class Product
     {
         ProductId = id;
         ShortDescription = descr;
-        ImageUrl = "http://www.hormelfoods.com/~/media/HormelFoods/Images/Brands/Product%20Shots/High%20Res%20Product%20Shots/spam-family-of-products.ashx";
+        ImageUrl = "";
         QuantityUnt = "";
         PricePerUnit = 69.00;
     }
