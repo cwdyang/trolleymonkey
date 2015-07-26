@@ -13,5 +13,6 @@ namespace DataAccess.Models
         DbSet<tbMasterArticleDepartment> tbMasterArticleDepartments { get; set; }
         DbSet<tbdcPredictItem> tbdcPredictItems { get; set; }
         DbSet<tbdcInventory> tbdcInventories { get; set; }
+        DbSet<ShoppingList> shoppingList { get; set; }
     }
 }
