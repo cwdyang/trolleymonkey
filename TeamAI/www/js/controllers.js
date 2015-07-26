@@ -87,6 +87,34 @@ angular.module('starter.controllers', [])
 	//$scope.showSelectValue = function(mySelect) {
 	//  console.log(mySelect);
 	//}
+	
+	$scope.map = "img/map.png";
+
+	ble.isEnabled(
+		function() {
+			ble.startScan(
+				[],
+				function(device) {
+					if(device.id=="D0:5F:B8:30:E3:F1")
+						alert("Look Around you! we found some bananas!");
+				},
+				function() {
+					//alert("nope!");
+				}
+			);
+			
+			setTimeout(ble.stopScan,
+				30000,
+				function() { console.log("Scan complete"); },
+				function() { console.log("stopScan failed"); }
+			);
+		},
+		function() {
+			alert("Bluetooth is *not* enabled");
+		}
+	);
+	
+ 
 })
 
 .controller('ScanCtrl', function($scope) {

@@ -1,24 +1,36 @@
 <ion-view view-title="Shopping List">
   <ion-content>  
     <ion-list>
-      <ion-item ng-repeat="productitem in shoppinglist">
+      <ion-item ng-repeat="productitem in shoppinglist" on-swipe-left="removeProduct(productitem.ShoppingListProductId)">
 		<span class="item item-thumbnail-left">
 			<img src={{productitem.Product.ImageUrl}}>
 			<h2>{{productitem.Product.ShortDescription}}</h2>
 			<p>{{productitem.Product.QuantityUnit}} @ ${{productitem.Product.PricePerUnit}}</p>
+			<p><h2>{{productitem.Quantity}} units :  ${{productitem.Quantity * productitem.Product.PricePerUnit}}</h2></p>
 		</span>	  
       </ion-item>
     </ion-list>
 	
-	<!--ion-list>
-      <ion-item ng-repeat="productitem in shoppinglist">
-        {{productitem.Product.PricePerUnit}}
-      </ion-item>
-    </ion-list>
-	<ion-list>
-      <ion-item ng-repeat="productitem in shoppinglist">
-        {{productitem}}
-      </ion-item>
-    </ion-list-->
+	<div style="padding-bottom:50px">
+		Total Price: ${{impVars.TotalPrice}} <br/>
+		Health Percentage: {{(impVars.HealthyCount/shoppinglist.length) * 100}} <br/>
+		Budget: ${{impVars.Budget}}
+	</div>
+	
   </ion-content>
+	
+	<div class="tabs tabs-icon-top">
+	  <a class="tab-item" href="#/app/additems">
+		<i class="icon ion-plus-circled"></i>
+		Add Items
+	  </a>
+	  <a class="tab-item" href="#/app/map">
+		<i class="icon ion-map"></i>
+		Map
+	  </a>
+	  <a class="tab-item" href="#/app/done">
+		<i class="icon ion-checkmark-circled"></i>
+		Done
+	  </a>
+	</div>
 </ion-view>
