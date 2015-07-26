@@ -38,7 +38,7 @@ namespace DataAccess.Repos
                 foreach (var tbdcProduct in tbdcProductExtentions)
                 {
                     var product = new ShoppingListProduct(Convert.ToInt64(tbdcProduct.NzpnaNo),
-                        tbdcProduct.ProductDescription, "",
+                        tbdcProduct.ProductDescription, string.Format("Static/product-images/{0}.png", tbdcProduct.NzpnaNo),
                         tbdcProduct.Unit,
                         Convert.ToDouble(tbdcProduct.grossretailprice), tbdcProduct.Departmentdescription,
                         tbdcProduct.SubDepartmentDescription, tbdcProduct.HealthRating == "H", tbdcProduct.Food != "N",
