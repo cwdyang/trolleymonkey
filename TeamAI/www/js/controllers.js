@@ -145,7 +145,9 @@ angular.module('starter.controllers', [])
           }
         });
       };
+})
 
+.controller('MeterCtrl', function($scope) {
       $scope.healthMeter = null;
       $scope.budgetMeter = null;
       $scope.showMeters = function() {

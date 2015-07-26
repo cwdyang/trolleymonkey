@@ -1,5 +1,14 @@
 <ion-view view-title="Shopping List">
-  <ion-content>  
+  <ion-content> 
+  <div style="top"> 
+	<div class="button-bar">
+	  <a class="button button-balanced" href="#/app/trend">Budget</a>
+	  <a class="button button-assertive" href="#/app/trend">Health</a>
+	</div>
+	<div class="totals">
+		<h1>Total Price: ${{impVars.TotalPrice}}</h1> 
+	</div>
+  </div>  
     <ion-list>
       <ion-item ng-repeat="productitem in shoppinglist" on-swipe-left="removeProduct(productitem.ShoppingListProductId)">
 		<span class="item item-thumbnail-left">
@@ -10,12 +19,6 @@
 		</span>	  
       </ion-item>
     </ion-list>
-	
-	<div style="padding-bottom:50px">
-		Total Price: ${{impVars.TotalPrice}} <br/>
-		Health Percentage: {{(impVars.HealthyCount/shoppinglist.length) * 100}} <br/>
-		Budget: ${{impVars.Budget}}
-	</div>
 	
   </ion-content>
 	
