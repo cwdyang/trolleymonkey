@@ -1,21 +1,20 @@
-<ion-view view-title="Shopping List">
+<ion-view view-title="<span style='vertical-align:top;'><font color={{impVars.BudgetHealthColor}}>${{impVars.TotalPrice.toFixed(2)}}..${{impVars.Budget.toFixed(2)}} Budget</font></span><img src='img/Icon.png' style='vertical-align:top' alt='Icon' height='44px' width='44px'/>" >
+
   <ion-content>  
+	
     <ion-list>
+		
       <ion-item ng-repeat="productitem in shoppinglist" on-swipe-left="removeProduct(productitem.ShoppingListProductId)">
-		<span class="item item-thumbnail-left">
+		<span class="item item-thumbnail-left" ng-style="(foundItem==productitem.Product.ShortDescription)? {'background-color':'orange'}:{'background-color':'white'}">
 			<img src={{productitem.Product.ImageUrl}}>
-			<h2>{{productitem.Product.ShortDescription}}</h2>
-			<p>{{productitem.Product.QuantityUnit}} @ ${{productitem.Product.PricePerUnit}}</p>
-			<p><h2>{{productitem.Quantity}} units :  ${{productitem.Quantity * productitem.Product.PricePerUnit}}</h2></p>
+			<h2 ng-style="(productitem.Product.IsHealthy)?{'color':'green'}:{'color':'black'}">{{productitem.Product.ShortDescription}}</h2>
+			<p>{{productitem.Product.QuantityUnit}} @ ${{productitem.Product.PricePerUnit.toFixed(2)}}</p>
+			<p><h2><input placeholder="qty" type="number" ng-model="productitem.Quantity" style="width:40px">units :  ${{(productitem.Quantity * productitem.Product.PricePerUnit).toFixed(2)}}</h2></p>
 		</span>	  
       </ion-item>
     </ion-list>
 	
 	<div style="padding-bottom:50px">
-		Total Price: ${{impVars.TotalPrice}} <br/>
-		Health Percentage: {{(impVars.HealthyCount/shoppinglist.length) * 100}} <br/>
-		Budget: ${{impVars.Budget}}
-	</div>
 	
   </ion-content>
 	

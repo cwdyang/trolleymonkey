@@ -73,12 +73,117 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('AddItemsCtrl', function($scope) {
+.controller('AddItemsCtrl', function($rootScope, $scope,$state) {
 	$scope.text = "add items!";
 	
 	//$scope.showSelectValue = function(mySelect) {
 	//  console.log(mySelect);
 	//}
+	
+	$scope.addItem = function(code,name,imageUrl,qty,price){
+		var newProd = JSON.parse("{\"Product\":{\"ImageUrl\":\""+imageUrl+"\",\"IsHealthy\":false,\"PricePerUnit\":"+price+",\"ProductId\":"+code+",\"QuantityUnit\":\"1 unit\",\"ShortDescription\":\""+name+"\"},\"Quantity\":"+qty+",\"ShoppingListProductId\":"+code+"}");
+		$rootScope.shoppinglist.push(newProd);
+		
+		
+		
+		$state.go('app.shoppinglist');
+	};
+	
+	$scope.scan = function() {
+		cordova.plugins.barcodeScanner.scan(
+		function (result) {
+		
+		/*
+		alert("We got a barcode\n" +
+		"Result: " + result.text + "\n" +
+		"Format: " + result.format + "\n" +
+		"Cancelled: " + result.cancelled);
+		*/
+		
+		$rootScope.addedbarcode = result.text;
+		
+		//alert($rootScope.shoppinglist.length);
+		
+		//alert(JSON.stringify($rootScope.shoppinglist[0]));
+		
+		var newProd = JSON.parse("{\"Product\":{\"ImageUrl\":\"http:\/\/web-images.chacha.com\/images\/Gallery\/4711\/do-you-know-pirate-lingo-1405104939-sep-18-2012-1-600x400.jpg\",\"IsHealthy\":false,\"PricePerUnit\":33.633,\"ProductId\":233,\"QuantityUnit\":\"1 litre\",\"ShortDescription\":\"Mystery Item\"},\"Quantity\":1,\"ShoppingListProductId\":224}");
+	
+		//alert(newProd);	
+		
+		$rootScope.shoppinglist.push(newProd);
+		
+		//alert($rootScope.shoppinglist.length);
+		
+		
+		
+		
+		$state.go('app.shoppinglist');
+		
+			
+		},
+		function (error) {
+		alert("Scanning failed: " + error);
+		}
+		);
+	};
+	
+})
+
+.controller('BusyCtrl',function($scope){
+	$scope.busyMeter1 = null;
+      $scope.busyMeter2 = null;
+      $scope.showMeters = function() {
+        $scope.busyMeter1 = c3.generate({
+          bindto: '#busyMeter1',
+          data: {
+            columns: [
+              ['data', 45]
+            ],
+            type: 'gauge',
+          },
+          color: {
+            pattern: ['#00ff00','#FF8000', '#ff3300'],
+            threshold: {
+              values: [10, 40, 80]
+            }
+          },
+          size: {
+            height: 100
+          }
+
+        });
+
+        $scope.busyMeter2 = c3.generate({
+          bindto: '#busyMeter2',
+          data: {
+            columns: [
+              ['data', 32]
+            ],
+            type: 'gauge',
+          },
+          color: {
+            pattern: ['#00ff00','#FF8000', '#ff3300'],
+            threshold: {
+              values: [10,40, 80]
+            }
+          },
+          
+          size: {
+            height: 100
+          }
+
+        });
+
+        $scope.busyMeter1.setTimeout(function () {
+          $scope.busyMeter1.load({
+            columns: [['data', 10]]
+          });
+          $scope.busyMeter2.load({
+            columns: [['data', 10]]
+          });
+        }, 1000);
+
+      };
 })
 
 .controller('MapCtrl', function($scope) {
@@ -91,34 +196,64 @@ angular.module('starter.controllers', [])
 	$scope.map = "img/map.png";
 
 	ble.isEnabled(
-		function() {
-			ble.startScan(
-				[],
-				function(device) {
-					if(device.id=="D0:5F:B8:30:E3:F1")
-						alert("Look Around you! we found some bananas!");
+				function() {
+					
+					  
+					  
+					var timer = setInterval(function(){
+					
+					ble.stopScan;
+					ble.startScan(
+						[],
+						function(device) {
+							//$scope.broadcast("foundItemEvent",["Device"]);
+
+							//alert("Xx");
+							$scope.$apply( function() {
+								//alert("cc");
+								switch(device.id)
+								{
+									case "D0:5F:B8:30:E3:F1":
+										$scope.foundItem = "Banana";
+										break;
+									case "D0:5F:B8:30:DE:AC":
+										$scope.foundItem = "Wine";
+										break;
+								};
+								 
+							});
+							
+							alert("Found some: " + $scope.foundItem);
+							//ble.disconnect(device.id, function(data){}, function(data){});
+						},
+						function() {
+							//alert("nope!");
+						}
+					);
+					
+					},
+						3000 /*,
+						function() { console.log("Scan complete"); },
+						function() { console.log("stopScan failed"); }*/
+					);
+					
+					$scope.$on('$ionicView.beforeLeave', function(){
+						clearInterval(timer);
+						//alert("Before Leaving Map");
+					});
+					
 				},
 				function() {
-					//alert("nope!");
+					alert("Bluetooth is *not* enabled");
 				}
 			);
-			
-			setTimeout(ble.stopScan,
-				30000,
-				function() { console.log("Scan complete"); },
-				function() { console.log("stopScan failed"); }
-			);
-		},
-		function() {
-			alert("Bluetooth is *not* enabled");
-		}
-	);
 	
  
 })
 
 .controller('ScanCtrl', function($scope) {
 	$scope.text = "scan!";
+	
 	
 	//$scope.showSelectValue = function(mySelect) {
 	//  console.log(mySelect);
@@ -132,19 +267,23 @@ angular.module('starter.controllers', [])
 	//}
 })
 
-.controller('DoneCtrl', function($scope) {
+.controller('DoneCtrl', function($rootScope,$scope) {
       $scope.chart = null;
       $scope.showGraph = function() {
         $scope.chart = c3.generate({
           bindto: '#chart',
           data: {
             columns: [
-              ['number of cats', 30, 200, 100, 400, 150, 250],
-              ['data2', 50, 20, 10, 40, 15, 25]
+              ['Health', 30, 200, 100, 400, 150, 250],
+              ['Budget', 50, 20, 10, 40, 15, 25]
             ]
           }
         });
       };
+	  
+	  
+	  
+	  
 
       $scope.healthMeter = null;
       $scope.budgetMeter = null;
@@ -153,7 +292,7 @@ angular.module('starter.controllers', [])
           bindto: '#healthMeter',
           data: {
             columns: [
-              ['data', 91.4]
+              ['data', ($rootScope.impVars.HealthyCount /$rootScope.impVars.ItemCount)*100]
             ],
             type: 'gauge',
           },
@@ -173,7 +312,7 @@ angular.module('starter.controllers', [])
           bindto: '#budgetMeter',
           data: {
             columns: [
-              ['data', 110]
+              ['data', ($rootScope.impVars.TotalPrice/$rootScope.impVars.Budget ) * 100]
             ],
             type: 'gauge',
           },
@@ -197,49 +336,159 @@ angular.module('starter.controllers', [])
           $scope.budgetMeter.load({
             columns: [['data', 10]]
           });
-        }, 3000);
+        }, 1000);
 
       };
 })
 	
-.controller('ShoppingListCtrl', function($scope, $http) {	
-
-	//$scope.shoppinglist = "tempValue";
+.controller('ShoppingListCtrl', function($rootScope, $scope, $http) {	
+	//watch the shopping list and update the total
+	
+	
 	
 	$http.get('http://testazure.cloudapp.net/Service1.svc/GetProductsInShoppingList').
-	success(function (data) {
-		$scope.shoppinglist = data;	
-		
-		$scope.impVars = {};
-		$scope.impVars.TotalPrice = 0;
-		$scope.impVars.HealthyCount = 0;
-		$scope.impVars.Budget = 10;
-		
-		for (var i = 0; i < $scope.shoppinglist.length; i++) {
-			$scope.impVars.TotalPrice = $scope.impVars.TotalPrice + ($scope.shoppinglist[i].Quantity * $scope.shoppinglist[i].Product.PricePerUnit);
-			if($scope.shoppinglist[i].Product.IsHealthy == true)
-			{
-				$scope.impVars.HealthyCount = $scope.impVars.HealthyCount + 1;
+		success(function (data) {
+			$rootScope.shoppinglist = data;	
+			
+			
+			
+			$rootScope.impVars = {};
+			$rootScope.impVars.TotalPrice = 0;
+			$rootScope.impVars.HealthyCount = 0;
+			$rootScope.impVars.Budget = 100;
+			$rootScope.impVars.ItemCount = 0;
+			$rootScope.impVars.BudgetHealthColor = "green";
+			
+			
+			for (var i = 0; i < $rootScope.shoppinglist.length; i++) {
+				//$rootScope.impVars.TotalPrice +=  ($rootScope.shoppinglist[i].Quantity * $rootScope.shoppinglist[i].Product.PricePerUnit);  //
+				if($rootScope.shoppinglist[i].Product.IsHealthy)
+				{
+					$rootScope.impVars.HealthyCount += 1;
+				}
+				$rootScope.impVars.ItemCount += 1;
+				
 			}
+			
+			
+			var timerTotalCheck = setInterval(function(){
+				 
+					$rootScope.impVars.TotalPrice = 0;
+
+					for (var i = 0; i < $rootScope.shoppinglist.length; i++) {
+						$rootScope.impVars.TotalPrice +=  ($rootScope.shoppinglist[i].Quantity * $rootScope.shoppinglist[i].Product.PricePerUnit);
+					}
+					
+					$rootScope.impVars.BudgetHealthColor = (($rootScope.impVars.TotalPrice/$rootScope.impVars.Budget)>.9)?"Red":((($rootScope.impVars.TotalPrice/$rootScope.impVars.Budget)>.5)?"Orange":"Green");
+				}
+			,1500);
+			
+			
+			
+			$rootScope.$watchCollection(function() {
+				return $rootScope.shoppinglist;
+			}, function() {
+					$rootScope.impVars.TotalPrice = 0;
+					
+					for (var i = 0; i < $rootScope.shoppinglist.length; i++) {
+						$rootScope.impVars.TotalPrice +=  ($rootScope.shoppinglist[i].Quantity * $rootScope.shoppinglist[i].Product.PricePerUnit);
+					}
+					
+			});
+
+			
+			/*
+			$rootScope.TotalPrice = $rootScope.impVars.TotalPrice;
+			$rootScope.Budget = $rootScope.impVars.Budget;
+			$rootScope.HealthyCount = $rootScope.impVars.HealthyCount;
+			$rootScope.ItemCount = $rootScope.impVars.ItemCount;
+			*/
+			
+			
+			
+			ble.isEnabled(
+				function() {
+					
+					  
+					  
+					var timer = setInterval(function(){
+					
+					ble.stopScan;
+					ble.startScan(
+						[],
+						function(device) {
+							//$scope.broadcast("foundItemEvent",["Device"]);
+
+							//alert("Xx");
+							$scope.$apply( function() {
+								//alert("cc");
+								switch(device.id)
+								{
+									case "D0:5F:B8:30:E3:F1":
+										$scope.foundItem = "Banana";
+										break;
+									case "D0:5F:B8:30:DE:AC":
+										$scope.foundItem = "Wine";
+										break;
+								};
+								 
+							});
+							
+							//alert("Found some: " + $scope.foundItem);
+							//ble.disconnect(device.id, function(data){}, function(data){});
+						},
+						function() {
+							//alert("nope!");
+						}
+					);
+					
+					},
+						3000 /*,
+						function() { console.log("Scan complete"); },
+						function() { console.log("stopScan failed"); }*/
+					);
+					
+					/*
+					$scope.$on('$ionicView.beforeLeave', function(){
+						clearInterval(timer);
+						//alert("Before Leaving Map");
+					});
+					*/
+				},
+				function() {
+					alert("Bluetooth is *not* enabled");
+				}
+			);
+			
+			/*
+			$scope.$on('$ionicView.beforeLeave', function(){
+						clearInterval(timerTotalCheck);
+					});
+			*/
+			
+		}).
+		error(function (data, status, headers, config) {
+			$scope.shoppinglist = status ;
 		}
-	}).
-	error(function (data, status, headers, config) {
-		$scope.shoppinglist = status ;
-	});	
+	);	
+		
+		
 	
 	$scope.removeProduct = function($id) {		
-		for (var i = 0; i < $scope.shoppinglist.length; i++) {
-			if ($scope.shoppinglist[i].ShoppingListProductId == $id) {
-				if($scope.shoppinglist[i].Product.IsHealthy == true)
+		for (var i = 0; i < $rootScope.shoppinglist.length; i++) {
+			if ($rootScope.shoppinglist[i].ShoppingListProductId == $id) {
+				if($rootScope.shoppinglist[i].Product.IsHealthy == true)
 				{					
-					$scope.impVars.HealthyCount = $scope.impVars.HealthyCount - 1;					
+					$rootScope.impVars.HealthyCount = $rootScope.impVars.HealthyCount - 1;					
 				}
 				
-				$scope.impVars.TotalPrice = $scope.impVars.TotalPrice - ($scope.shoppinglist[i].Quantity * $scope.shoppinglist[i].Product.PricePerUnit);
-				$scope.shoppinglist.splice(i--, 1);
+				//$rootScope.impVars.TotalPrice = $rootScope.impVars.TotalPrice - ($rootScope.shoppinglist[i].Quantity * $rootScope.shoppinglist[i].Product.PricePerUnit);
+				$rootScope.shoppinglist.splice(i--, 1);
 			}
 		}
-	}	
+	};	
+	
+	
 })
 
 .controller('ProductCtrl', function($scope, $stateParams) {

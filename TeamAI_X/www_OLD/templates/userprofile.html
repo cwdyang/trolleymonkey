@@ -1,0 +1,135 @@
+<ion-view view-title="Profile">
+  <ion-content>
+
+      <img data-ng-src="{{profilephoto}}" alt="Description" height="160px" width="120px" />
+
+      <label class="item item-input">
+          <span class="input-label">Full Name</span>
+          <input type="text" ng-model="profilename" value="{{profilename}}" required>
+      </label>
+
+          <label class="item item-input item-select">
+              <div class="input-label">
+                  Gender
+              </div>
+              <select ng-model="gender">
+                  <option value= 'M'>Male</option>
+                  <option value = 'F'>Female</option>
+              </select>
+          </label>
+
+          <label class="item item-input">
+              <span class="input-label">Date of Birth</span>
+              <input type="date" ng-model="dateofbirth" value="{{dateofbirth}}">
+          </label>
+
+      <label class="item item-input">
+      <span class="input-label">Fly Buys</span>
+      <input type="tel" ng-model="flybuys" size="19" ng-minlength="19" ng-maxlength="19">
+
+  </label>
+
+      <label class="item item-input" style="height:100px;">
+          <span class="input-label">Address</span>
+          <!--<input type="text" ng-model="address"  placeholder="Customer Address" value="{{address}}">-->
+          <textarea ng-model="address" style="height:84px; padding-top: 8px; padding-bottom: 8px;" placeholder="Customer Address" value="{{address}}">
+	</textarea>
+
+      </label>
+
+
+      <label class="item item-input">
+          <span class="input-label">Phone</span>
+
+          <input type="tel" ng-model="phone" value="{{phone}}">
+      </label>
+
+      <label class="item item-input item-select">
+          <div class="input-label">
+              Preferred store
+          </div>
+          <select ng-model="store">
+              <option value= '1'>Albany</option>
+              <option value = '2'>Birkenhead</option>
+              <option value = '3'>Botany</option>
+              <option value = '4'>Browns Bay</option>
+              <option value = '5'>Clendon</option>
+              <option value = '6'>Devonport</option>
+              <option value = '7'>Eastridge</option>
+              <option value = '8'>Green Bay</option>
+              <option value = '9'>Howick</option>
+              <option value = '10'>Kumeu</option>
+              <option value = '11'>Metro Queen Street</option>
+              <option value = '12'>Mt Roskill</option>
+              <option value = '13'>New Lynn</option>
+              <option value = '14'>Orewa</option>
+              <option value = '15'>Papakura</option>
+              <option value = '16'>Papatoetoe</option>
+              <option value = '17'>Remuera</option>
+              <option value = '18'>Southmall</option>
+              <option value = '19'>Stonefields</option>
+              <option value = '20'>Victoria Park</option>
+              <option value = '21'>Waiuku</option>
+              <option value = '22'>Warkworth</option>
+
+          </select>
+      </label>
+
+
+      <h4 style="padding-left: 15px; padding-top: 20px;">Dietary options</h4>
+
+      <ul class="list">
+
+          <li class="item item-checkbox">
+              <label class="checkbox">
+                  <input type="checkbox" ng-model="VegetarianYN">
+              </label>
+              Vegetarian
+          </li>
+
+          <li class="item item-checkbox">
+              <label class="checkbox">
+                  <input type="checkbox" ng-model="VeganYN">
+              </label>
+              Vegan
+          </li>
+
+          <li class="item item-checkbox">
+              <label class="checkbox">
+                  <input type="checkbox" ng-model="GreenYN">
+              </label>
+              Green
+          </li>
+
+      </ul>
+
+      <h4 style="padding-left: 15px; padding-top:10px;">Cuisine preference</h4>
+
+      <ul class="list">
+
+          <li class="item item-checkbox">
+              <label class="checkbox">
+                  <input type="checkbox" ng-model="EuropeanYN">
+              </label>
+              European
+          </li>
+
+          <li class="item item-checkbox">
+              <label class="checkbox">
+                  <input type="checkbox" ng-model="AsianYN">
+              </label>
+              Asian
+          </li>
+
+          <li class="item item-checkbox">
+              <label class="checkbox">
+                  <input type="checkbox" ng-model="IndianYN">
+              </label>
+              Indian
+          </li>
+
+      </ul>
+
+
+  </ion-content>
+</ion-view>

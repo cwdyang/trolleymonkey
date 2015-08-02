@@ -82,7 +82,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: '/busyness',
       views: {
         'menuContent': {
-          templateUrl: 'templates/busyness.html'
+          templateUrl: 'templates/busyness.html',
+		  controller: 'BusyCtrl'
         }
       }
     })
